@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated SVG to GIF Converter</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2451471082233132"
+     crossorigin="anonymous"></script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      line-height: 1.5;
+      padding: 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: #444;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .controls label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+    }
+
+    .controls label span {
+      margin-bottom: 0.25rem;
+    }
+
+    .controls input[type="number"],
+    .controls button,
+    .controls input[type="color"],
+    .controls textarea,
+    .controls input[type="file"] {
+      font-family: inherit;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 80px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 0.5rem;
+      resize: vertical;
+    }
+
+    input[type="file"] {
+      padding: 0.3rem;
+    }
+
+    #mysvg {
+      width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    #preview,
+    #gifPreview {
+      display: block;
+      margin: 0.5rem auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .carousel-container {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      width: 100%;
+      padding: 0.5rem 0;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .carousel-container::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+    }
+
+    .carousel-item {
+      flex: 0 0 auto;
+      position: relative;
+      margin-right: 0.5rem;
+    }
+
+    .frame-img {
+      display: block;
+      border-radius: 4px;
+    }
+
+    .badge {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.75rem;
+    }
+
+    .badge.frame {
+      top: 5px;
+      left: 5px;
+    }
+
+    .badge.time {
+      bottom: 5px;
+      right: 5px;
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+
+    .loading {
+      text-align: center;
+      display: none;
+    }
+
+    .stats {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Animated SVG to GIF</h1>
+  <div class="container">
+    <!-- SVG Display -->
+    <div class="card">
+      <svg id="mysvg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g id="coolBean">
+          <g class="bean">
+            <path fill="brown" stroke="#fff" stroke-width="2"
+              d="M 17 59 c -13 8 -13 39 15 35 a 50 50 0 0 0 31 -83 c -11 -11 -38 -4 -25 29 c 5 14 -9 11 -21 19z" />
+            <path fill="rgba(255,255,255,0.5)" d="M 42 42 c 7 7 -2 16 -12 14 c 6 -2 14 -5 12 -14 z" />
+          </g>
+          <g class="glasses" transform="translate(0 -42)">
+            <path fill="#000"
+              d="M 10 24 h 90 v 7.5 h -4 v 3.5 h -3.5 v 3 h -3.5 v 3.5 h -24 v -3.5 h -3.5 v -3 h -3.5 v -7 h -6 v 7 h -3.5 v 3 h -3.5 v 3.5 h -24.5 v -3.5 h -3.5 v -3 h -3.5 v -3.5 h -3.5 z" />
+            <path fill="#fff"
+              d="M 17 28 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 0 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 31 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 0 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z" />
+            <animateTransform attributeName="transform" type="translate" values="0 -42; 0 0" dur="3s" begin="0s"
+              repeatCount="0" fill="freeze" />
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Controls -->
+    <div class="card controls">
+      <h2>Controls</h2>
+      <label>
+        <span>Use Example SVG</span>
+        <button id="useExampleSvg">Load Example</button>
+      </label>
+      <label>
+        <span>Paste SVG String</span>
+        <textarea id="svgTextInput" placeholder="Paste raw SVG markup here..."></textarea>
+        <button id="loadTextSvg">Load SVG</button>
+      </label>
+      <label>
+        <span>Import SVG File</span>
+        <input type="file" id="importSvgInput" accept=".svg">
+      </label>
+      <br />
+      <label>
+        <span
+          title="The value of the smallest of either the picture's height or width. Example: a 20 x 80 svg image will be scaled up to 200 x 800">Minimum
+          pixel dimensions</span>
+        <input type="number" id="pixelMinimumInput" value="200" step="10" min="100" max="1000">
+      </label>
+    </div>
+
+    <!-- Single Frame Export -->
+    <div class="card controls">
+      <h2>Export Frame</h2>
+      <label>
+        <span>Background</span>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <input type="checkbox" id="singleTransparent">
+          <label for="singleTransparent" style="font-weight:400; margin:0;">Transparent</label>
+          <input type="color" id="singleBgColor" value="#ffffff">
+        </div>
+      </label>
+      <label>
+        <span>Freeze at (seconds)</span>
+        <input type="number" id="timeInput" value="1" step="0.1" min="0" max="3">
+      </label>
+      <button id="export">Export as PNG</button>
+      <img id="preview"
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' height='200px' width='200px'%3E%3Crect height='100%25' width='100%25' fill='%23ccc' stroke='goldenrod' /%3E%3Ctext x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-size='10' font-family='Roboto, sans-serif'%3EPNG Image Here%3C/text%3E%3C/svg%3E"
+        alt="PNG preview will appear here" width="200">
+    </div>
+
+    <!-- Carousel Generator -->
+    <div class="card controls">
+      <h2>Generate Frame Carousel</h2>
+      <label>
+        <span>Background</span>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <input type="checkbox" id="carouselTransparent">
+          <label for="carouselTransparent" style="font-weight:400; margin:0;">Transparent</label>
+          <input type="color" id="carouselBgColor" value="#ffffff">
+        </div>
+      </label>
+      <label>
+        <span>Total Duration (seconds)</span>
+        <input type="number" id="durationInput" value="4" step="0.1" min="0.1">
+
+        <label>
+          <span title="Frames per second">FPS</span>
+          <input type="number" id="fpsInput" value="12" step="1" min="1" max="60">
+        </label>
+        <br />
+        <button id="generateCarousel">Generate</button>
+        <button id="downloadZip" style="display:none; margin-top:0.5rem;">Download ZIP</button>
+        <div class="loading" id="loading">Generating... <span id="progress">0%</span></div>
+        <div class="status" id="status"></div>
+        <div class="carousel-container" id="carousel-container"></div>
+    </div>
+
+    <!-- GIF Generator -->
+    <div class="card controls">
+      <h2>Generate GIF</h2>
+      <label><span>Frame Delay (ms)</span><input type="number" id="gifDelayInput" value="100" min="1"></label>
+      <div style="display:flex; align-items:center; gap:0.5rem;">
+        <input type="checkbox" id="gifInfinite" checked>
+        <label for="gifInfinite" style="font-weight:400; margin:0;">Infinite Loop</label>
+      </div>
+      <label id="gifLoopCountField" style="display:none;"><span>Loop Count</span><input type="number" id="gifLoopCount"
+          min="1" value="1"></label>
+      <button id="generateGifBtn">Generate GIF</button>
+      <button id="downloadGifBtn" disabled>Download GIF</button>
+      <img id="gifPreview" alt="GIF Preview"
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' height='200px' width='200px'%3E%3Crect height='100%25' width='100%25' fill='%23ccc' stroke='goldenrod' /%3E%3Ctext x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-size='10' font-family='Roboto, sans-serif'%3EGIF Image Here%3C/text%3E%3C/svg%3E"
+        alt="GIF preview will appear here" width="200">
+      <div class="stats" id="gifStats">&nbsp;</div>
+    </div>
+  </div>
+
+  <!-- Hidden staging area -->
+  <div id="staging-container" style="position:absolute; left:-9999px; top:-9999px;"></div>
+
+  <script>
+    const DOMURL = window.URL || window.webkitURL || window;
+    const exampleSvgMarkup = document.getElementById("mysvg").outerHTML;
+
+    function setSvgContent(markup) {
+      const wrapper = document.createElement("div");
+      wrapper.innerHTML = markup.trim();
+      const newSvg = wrapper.firstChild;
+      if (newSvg && newSvg.nodeName.toLowerCase() === "svg") {
+        document.getElementById("mysvg").replaceWith(newSvg);
+        newSvg.id = "mysvg";
+      }
+    }
+    document
+      .getElementById("useExampleSvg")
+      .addEventListener("click", () => setSvgContent(exampleSvgMarkup));
+    document.getElementById("loadTextSvg").addEventListener("click", () => {
+      const text = document.getElementById("svgTextInput").value;
+      if (text.trim()) setSvgContent(text);
+    });
+    document.getElementById("importSvgInput").addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => setSvgContent(reader.result);
+      reader.readAsText(file);
+    });
+    // Toggle color inputs when transparent selected
+    document.getElementById("singleTransparent").addEventListener("change", (e) => {
+      document.getElementById("singleBgColor").disabled = e.target.checked;
+    });
+    document
+      .getElementById("carouselTransparent")
+      .addEventListener("change", (e) => {
+        document.getElementById("carouselBgColor").disabled = e.target.checked;
+      });
+    /**
+      * Converts a single frame of an animated SVG into a PNG data URL
+      * by calculating the state of animations at a specific time 't'.
+      *
+      * @param {SVGSVGElement} svg The SVG element to export.
+      * @param {number} t The time in seconds for which to capture the frame.
+      * @param {number} width The desired width of the output PNG.
+      * @param {number} height The desired height of the output PNG.
+      * @param {string|null} bgColor The background color of the PNG canvas, or null for transparent.
+      * @returns {Promise<string>} A promise that resolves with the PNG data URL.
+      */
+    /**
+      * Converts a single frame of an animated SVG into a PNG data URL
+      * by calculating the state of animations at a specific time 't',
+      * now including handling for infinitely repeating animations.
+      *
+      * @param {SVGSVGElement} svg The SVG element to export.
+      * @param {number} t The time in seconds for which to capture the frame.
+      * @param {number} width The desired width of the output PNG.
+      * @param {number} height The desired height of the output PNG.
+      * @param {string|null} bgColor The background color of the PNG canvas, or null for transparent.
+      * @returns {Promise<string>} A promise that resolves with the PNG data URL.
+      */
+    async function exportSVGFrameAsPNG(
+      svg,
+      t, // current time in seconds
+      width = 200,
+      height = 200,
+      bgColor = "#ffffff"
+    ) {
+      // Clone the SVG to avoid modifying the original and work with a clean slate for the frame
+      const stagingSvg = svg.cloneNode(true);
+      // Use a staging container to add the cloned SVG to the DOM temporarily
+      const stagingContainer = document.getElementById("staging-container");
+      if (!stagingContainer) {
+        console.error("Staging container element not found. Please create an element with id 'staging-container'.");
+        // Create a temporary container if it doesn't exist, though a pre-existing one is better for performance
+        const tempContainer = document.createElement('div');
+        tempContainer.id = 'staging-container';
+        tempContainer.style.cssText = 'position: absolute; left: -9999px; top: -9999px; width: 0; height: 0; overflow: hidden;';
+        document.body.appendChild(tempContainer);
+        stagingContainer = tempContainer;
+      }
+      stagingContainer.innerHTML = ""; // Clear previous content
+      stagingContainer.appendChild(stagingSvg);
+      // Select all relevant animation elements
+      const animations = stagingSvg.querySelectorAll("animate, animateTransform, animateMotion, set");
+      animations.forEach((anim) => {
+        const target = anim.parentNode;
+        // Ensure the target element exists before attempting to modify it
+        if (!target || target.nodeType !== Node.ELEMENT_NODE) {
+          console.warn("Animation element found without a valid target element:", anim);
+          return; // Skip this animation
+        }
+        const tagName = anim.tagName.toLowerCase();
+        const durAttr = anim.getAttribute("dur");
+        // Handle indefinite durations and missing dur attributes as Infinity
+        const dur = (durAttr === "indefinite" || !durAttr) ? Infinity : parseFloat(durAttr);
+        const begin = parseFloat(anim.getAttribute("begin")) || 0; // Default begin time is 0
+        const values = anim.getAttribute("values");
+        const from = anim.getAttribute("from");
+        const to = anim.getAttribute("to");
+        const attributeName = anim.getAttribute("attributeName");
+        const elapsed = t - begin;
+        const fill = anim.getAttribute('fill'); // 'freeze' or 'remove' (default)
+        const repeatCount = anim.getAttribute('repeatCount');
+        const repeatDur = anim.getAttribute('repeatDur');
+        let active = false;
+        let progress = 0; // Normalized time (0 to 1) within the active duration or cycle
+        let interpolatedValue = null; // The calculated attribute value at time 't'
+        // --- Determine if the animation is active and calculate progress ---
+        // Check for indefinite repetition
+        const isRepeatingIndefinitely = (repeatCount === 'indefinite' || repeatDur === 'indefinite');
+        if (elapsed >= 0) { // Animation has started or is potentially repeating
+          if (isRepeatingIndefinitely && dur !== Infinity && dur > 0) {
+            // Animation repeats infinitely, calculate effective time within the current cycle
+            const effectiveElapsed = elapsed % dur;
+            progress = effectiveElapsed / dur;
+            active = true; // Always active if repeating indefinitely after begin time
+            // For repeating animations, fill="freeze" after the duration of a single cycle doesn't apply in the same way.
+            // The animation just restarts. So we treat it as active as long as elapsed >= 0.
+          } else if (elapsed < dur) {
+            // Animation is active within its single duration
+            active = true;
+            progress = elapsed / dur;
+          } else if (fill === 'freeze' && elapsed >= dur) {
+            // Animation has finished but fill="freeze", apply the end value
+            active = true; // Treat as active to get the final state
+            progress = 1; // At the very end of the animation
+          }
+          // If not repeating indefinitely, not within duration, and not frozen, it's not active.
+        }
+        // If the animation is not active at this time, skip processing it
+        if (!active) {
+          return;
+        }
+        // Determine the start and end values for interpolation based on 'values' or 'from'/'to'
+        let startValue = null;
+        let endValue = null;
+        if (values) {
+          const valueList = values.split(";").map(v => v.trim());
+          if (valueList.length > 0) {
+            // For simplicity, using the first and last values for linear interpolation over the whole duration.
+            // Handling keyTimes and multiple intermediate values would require more complex logic
+            // to find the correct value interval and local progress within that interval.
+            // When repeating, the 'progress' calculated using modulo already gives the position within the cycle.
+            startValue = valueList[0];
+            endValue = valueList[valueList.length - 1];
+            // If animation is frozen (and not repeating indefinitely), ensure we use the last value from 'values'
+            if (progress === 1 && fill === 'freeze' && !isRepeatingIndefinitely) {
+              startValue = valueList[valueList.length - 1]; // Effectively sets both to the final value
+              endValue = valueList[valueList.length - 1];
+            } else if (progress === 0 && elapsed >= 0 && !isRepeatingIndefinitely) {
+              // If at the start (progress 0) and not repeating, ensure we use the first value
+              endValue = valueList[0]; // Sets both to the start value
+              startValue = valueList[0];
+            } else if (valueList.length > 2 && !isRepeatingIndefinitely) {
+              // Basic handling for multiple values (without keyTimes/keySplines): Find the relevant interval based on progress.
+              const valueIndex = Math.min(Math.floor(progress * (valueList.length - 1)), valueList.length - 2);
+              const localProgress = (progress * (valueList.length - 1)) - valueIndex; // Progress within the interval
+              startValue = valueList[valueIndex];
+              endValue = valueList[valueIndex + 1];
+              progress = localProgress; // Use local progress for interpolation
+            } else if (valueList.length > 2 && isRepeatingIndefinitely) {
+              // Basic handling for multiple values with indefinite repeat:
+              // Find the relevant interval based on the progress within the cycle.
+              const valueIndex = Math.min(Math.floor(progress * (valueList.length - 1)), valueList.length - 2);
+              const localProgress = (progress * (valueList.length - 1)) - valueIndex;
+              startValue = valueList[valueIndex];
+              endValue = valueList[valueIndex + 1];
+              progress = localProgress; // Use local progress for interpolation within the interval
+            }
+          }
+        } else if (from !== null && to !== null) {
+          startValue = from;
+          endValue = to;
+          // If animation is frozen (and not repeating indefinitely), ensure we use the 'to' value
+          if (progress === 1 && fill === 'freeze' && !isRepeatingIndefinitely) {
+            startValue = to; // Set both to 'to' if frozen
+          } else if (progress === 0 && elapsed >= 0 && !isRepeatingIndefinitely) {
+            // If at the start and not repeating, ensure we use the 'from' value
+            endValue = from; // Set both to 'from'
+          }
+        } else {
+          // Cannot determine start and end values for interpolation
+          console.warn(`Animation on '${attributeName}' lacks sufficient 'values' or 'from'/'to' attributes.`);
+          return;
+        }
+        // --- Perform Interpolation Based on Animation Type and Attribute ---
+        // (This part remains largely the same, using the calculated 'progress')
+        if (tagName === "animatetransform") {
+          const type = anim.getAttribute("type");
+          if (startValue !== null && endValue !== null) {
+            if (type === "translate") {
+              const startCoords = startValue.split(/\s|,/).map(parseFloat).filter(n => !isNaN(n));
+              const endCoords = endValue.split(/\s|,/).map(parseFloat).filter(n => !isNaN(n));
+              if (startCoords.length === endCoords.length && startCoords.length > 0) {
+                const interpolatedCoords = startCoords.map((start, i) =>
+                  start + (endCoords[i] - start) * progress
+                );
+                interpolatedValue = `${type}(${interpolatedCoords.join(" ")})`; // Use the type in the transform string
+              }
+            }
+            // Add handling for other transform types: rotate, scale, skewX, skewY
+            // This would require parsing their specific value formats.
+          }
+        } else if (tagName === "animate") {
+          if (attributeName && startValue !== null && endValue !== null) {
+            if (attributeName === "d") {
+              // --- Handling 'd' attribute animation (Path Morphing) ---
+              // Basic interpolation attempt - will only work for paths with identical structure.
+              // Robust path morphing requires a dedicated library.
+              try {
+                const parsePathData = (pathString) => {
+                  const commands = pathString.match(/[a-df-zA-DF-Z][^a-df-zA-DF-Z]*/g) || [];
+                  return commands.map(cmd => {
+                    const type = cmd[0];
+                    const params = (cmd.substring(1).trim().match(/[+-]?(\d*\.\d+|\d+\.?)([eE][+-]?\d+)?/g) || []).map(parseFloat).filter(n => !isNaN(n));
+                    return {
+                      type,
+                      params
+                    };
+                  });
+                };
+                const interpolateParameters = (startParams, endParams, progress) => {
+                  const interpolated = [];
+                  const len = Math.min(startParams.length, endParams.length);
+                  for (let i = 0; i < len; i++) {
+                    interpolated.push(startParams[i] + (endParams[i] - startParams[i]) * progress);
+                  }
+                  return interpolated;
+                };
+                const buildPathStringFromCommands = (interpolatedCommands) => {
+                  return interpolatedCommands.map(cmd => {
+                    const formattedParams = cmd.params.map(p => parseFloat(p.toFixed(4))).join(" ");
+                    return cmd.type + formattedParams;
+                  }).join("");
+                };
+                const startPath = parsePathData(startValue);
+                const endPath = parsePathData(endValue);
+                if (startPath.length === endPath.length) {
+                  const interpolatedCommands = [];
+                  let canInterpolate = true;
+                  for (let i = 0; i < startPath.length; i++) {
+                    const startCmd = startPath[i];
+                    const endCmd = endPath[i];
+                    if (startCmd.type === endCmd.type && startCmd.params.length === endCmd.params.length) {
+                      interpolatedCommands.push({
+                        type: startCmd.type,
+                        params: interpolateParameters(startCmd.params, endCmd.params, progress)
+                      });
+                    } else {
+                      console.warn(`Cannot interpolate path command at index ${i} due to type or parameter mismatch.`);
+                      canInterpolate = false;
+                      break;
+                    }
+                  }
+                  if (canInterpolate) {
+                    interpolatedValue = buildPathStringFromCommands(interpolatedCommands);
+                  } else {
+                    console.warn("Path interpolation failed due to command mismatch. Using start path data.");
+                    interpolatedValue = startValue;
+                  }
+                } else {
+                  console.warn("Path command count mismatch. Cannot perform simple interpolation for 'd' attribute.");
+                  interpolatedValue = startValue;
+                }
+              } catch (e) {
+                console.error("Error during 'd' attribute interpolation:", e);
+                interpolatedValue = startValue; // Fallback on error
+              }
+              // --- End of 'd' attribute handling ---
+            } else {
+              // Handle other attributes (e.g., opacity, r, cx, cy, width, height, colors)
+              // Attempt numeric interpolation first
+              const startNum = parseFloat(startValue);
+              const endNum = parseFloat(endValue);
+              if (!isNaN(startNum) && !isNaN(endNum)) {
+                // Simple numeric interpolation
+                interpolatedValue = startNum + (endNum - startNum) * progress;
+                target.setAttribute(attributeName, interpolatedValue.toString()); // Set directly
+                interpolatedValue = null; // Indicate attribute was set
+              } else {
+                // Handle color interpolation (basic hex color support)
+                if (/^#([0-9A-F]{3}){1,2}$/i.test(startValue) && /^#([0-9A-F]{3}){1,2}$/i.test(endValue)) {
+                  try {
+                    const hexToRgb = (hex) => {
+                      const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+                      hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
+                      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                      return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null;
+                    };
+                    const rgbToHex = (r, g, b) => {
+                      const toHex = (c) => {
+                        const hex = Math.round(Math.max(0, Math.min(255, c))).toString(16); // Clamp and round
+                        return hex.length === 1 ? "0" + hex : hex;
+                      };
+                      return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+                    };
+                    const startRgb = hexToRgb(startValue);
+                    const endRgb = hexToRgb(endValue);
+                    if (startRgb && endRgb) {
+                      const interpolatedRgb = startRgb.map((start, i) =>
+                        start + (endRgb[i] - start) * progress
+                      );
+                      interpolatedValue = rgbToHex(interpolatedRgb[0], interpolatedRgb[1], interpolatedRgb[2]);
+                      target.setAttribute(attributeName, interpolatedValue); // Set directly
+                      interpolatedValue = null; // Indicate attribute was set
+                    } else {
+                      console.warn(`Color interpolation failed for attribute '${attributeName}'.`);
+                      target.setAttribute(attributeName, startValue); // Fallback
+                      interpolatedValue = null; // Indicate attribute was set
+                    }
+                  } catch (e) {
+                    console.error(`Error during color interpolation for attribute '${attributeName}':`, e);
+                    target.setAttribute(attributeName, startValue); // Fallback
+                    interpolatedValue = null; // Indicate attribute was set
+                  }
+                } else {
+                  // Cannot interpolate this attribute type with the current logic
+                  console.warn(`Attribute '${attributeName}' with values '${startValue}' and '${endValue}' is not handled by simple interpolation.`);
+                  // Fallback: set the attribute to the start value if active, or end value if frozen (if not repeating indefinitely).
+                  if (active && (!isRepeatingIndefinitely || progress === 0)) { // If repeating, only set to start at the very beginning of a cycle
+                    target.setAttribute(attributeName, startValue);
+                    interpolatedValue = null; // Indicate attribute was set
+                  } else if (active && progress === 1 && !isRepeatingIndefinitely && fill === 'freeze') {
+                    target.setAttribute(attributeName, endValue);
+                    interpolatedValue = null; // Indicate attribute was set
+                  }
+                }
+              }
+            }
+          }
+        } else if (tagName === "set") {
+          // 'set' animation just sets a value at a specific time.
+          // If the current time 't' is at or after the 'begin' time and within the duration
+          // (or indefinitely), apply the 'to' value.
+          const toValue = anim.getAttribute("to");
+          // For 'set', repetition means the value is set again at the start of each cycle.
+          // If repeating indefinitely, the 'to' value is active whenever elapsed >= 0.
+          // If not repeating, it's active only within the single duration.
+          if (toValue !== null) {
+            if (isRepeatingIndefinitely && elapsed >= 0) {
+              target.setAttribute(attributeName, toValue);
+              interpolatedValue = null; // Indicate attribute was set
+            } else if (elapsed >= 0 && elapsed < dur) {
+              target.setAttribute(attributeName, toValue);
+              interpolatedValue = null; // Indicate attribute was set
+            } else if (fill === 'freeze' && elapsed >= dur) {
+              // If frozen and past the end, apply the 'to' value as the final state
+              target.setAttribute(attributeName, toValue);
+              interpolatedValue = null; // Indicate attribute was set
+            }
+          }
+        }
+        // animateMotion is complex and requires calculating a point along a path and positioning the target.
+        // Skipping this for now as it adds significant complexity.
+        // If an interpolated value was computed and not already set, apply it to the target element.
+        // This check is needed because some attribute types (like numbers or colors) might be set directly.
+        if (interpolatedValue !== null) {
+          target.setAttribute(attributeName, interpolatedValue);
+        }
+      });
+      // After processing animations and applying their calculated state at time 't',
+      // remove the animation elements from the cloned SVG.
+      stagingSvg.querySelectorAll("animate, animateTransform, animateMotion, set").forEach((el) => el.remove());
+      // Serialize the modified SVG back to a string
+      const svgData = new XMLSerializer().serializeToString(stagingSvg);
+      // Create a Blob from the SVG data
+      const blob = new Blob([svgData], {
+        type: "image/svg+xml;charset=utf-8"
+      });
+      // Create an object URL for the Blob
+      const url = DOMURL.createObjectURL(blob);
+      // Create a canvas element to draw the SVG onto
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      // Fill the background if a color is specified
+      if (bgColor !== null) {
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, width, height);
+      }
+      // Load the SVG image onto the canvas
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = "anonymous"; // Required for loading data URLs or cross-origin images
+        img.onload = () => {
+          // Draw the image onto the canvas
+          ctx.drawImage(img, 0, 0, width, height);
+          // Revoke the object URL to free up resources
+          DOMURL.revokeObjectURL(url);
+          // Resolve the promise with the PNG data URL
+          resolve(canvas.toDataURL("image/png"));
+        };
+        img.onerror = (e) => {
+          // Revoke the object URL on error
+          DOMURL.revokeObjectURL(url);
+          // Reject the promise with the error
+          reject(e);
+        };
+        // Set the image source to the object URL
+        img.src = url;
+      });
+    }
+    /**
+      * Extracts the width and height from an SVG element, preferring width/height attributes,
+      * falling back to viewBox dimensions, and ensuring the smaller dimension is at least 200.
+      *
+      * @param {SVGSVGElement} svgElement The SVG element to inspect.
+      * @returns {{width: number, height: number} | null} An object containing the processed width and height, or null if no valid dimensions could be found.
+      */
+    function getProcessedSvgDimensions(svgElement) {
+      let resultWidth = null;
+      let resultHeight = null;
+      // 1. Try to get dimensions from width and height attributes
+      const widthAttr = svgElement.getAttribute('width');
+      const heightAttr = svgElement.getAttribute('height');
+      const parsedWidth = parseFloat(widthAttr);
+      const parsedHeight = parseFloat(heightAttr);
+      // Check if both width and height attributes provide valid numbers
+      if (!isNaN(parsedWidth) && !isNaN(parsedHeight) && parsedWidth > 0 && parsedHeight > 0) {
+        resultWidth = parsedWidth;
+        resultHeight = parsedHeight;
+        console.log(`Using dimensions from width/height attributes: ${resultWidth}x${resultHeight}`);
+      } else {
+        // 2. If width/height attributes are missing or invalid, fall back to viewBox
+        console.log("Width/height attributes missing or invalid, attempting to use viewBox.");
+        const viewBoxAttr = svgElement.getAttribute('viewBox');
+        if (viewBoxAttr) {
+          // Split the viewBox string by whitespace or commas, then convert to numbers
+          const values = viewBoxAttr.split(/[\s,]+/).map(parseFloat);
+          // A valid viewBox should have exactly 4 numeric values: x, y, width, height.
+          if (values.length === 4 && values.every(val => !isNaN(val))) {
+            const viewBoxWidth = values[2];
+            const viewBoxHeight = values[3];
+            // Ensure viewBox dimensions are positive before using them
+            if (viewBoxWidth > 0 && viewBoxHeight > 0) {
+              resultWidth = viewBoxWidth;
+              resultHeight = viewBoxHeight;
+              console.log(`Using dimensions from viewBox attribute: ${resultWidth}x${resultHeight}`);
+            } else {
+              console.warn("ViewBox dimensions are zero or negative, cannot use them.");
+            }
+          } else {
+            console.error("Invalid viewBox attribute format:", viewBoxAttr);
+          }
+        } else {
+          console.warn("SVG element does not have a viewBox attribute either.");
+        }
+      }
+      // 3. Check if we successfully got valid dimensions
+      if (resultWidth === null || resultHeight === null || isNaN(resultWidth) || isNaN(resultHeight) || resultWidth <= 0 || resultHeight <= 0) {
+        console.error("Could not determine valid positive dimensions from width/height or viewBox.");
+        return null; // Cannot proceed without valid dimensions
+      }
+      // 4. Scale up dimensions if the lesser value is less than 200
+      const minDimension = Math.min(resultWidth, resultHeight);
+      const minPixelValue = parseFloat(document.getElementById("pixelMinimumInput").value) || 200;
+      if (minDimension > 0 && minDimension < minPixelValue) { // Check minDimension > 0 to avoid division by zero
+        console.log(`Scaling dimensions up because the minimum dimension (${minDimension}) is less than ${minPixelValue}.`);
+        const scale = minPixelValue / minDimension;
+        resultWidth = resultWidth * scale;
+        resultHeight = resultHeight * scale;
+        console.log(`Scaled dimensions: ${resultWidth}x${resultHeight}`);
+      } else {
+        console.log(`No scaling needed. Minimum dimension is ${minDimension}.`);
+      }
+      // Return the final processed dimensions
+      return {
+        width: resultWidth,
+        height: resultHeight
+      };
+    }
+    // Single frame export
+    document.getElementById("export").addEventListener("click", async () => {
+      const svg = document.getElementById("mysvg");
+      const t = parseFloat(document.getElementById("timeInput").value);
+      const useTrans = document.getElementById("singleTransparent").checked;
+      const bg = useTrans ? null : document.getElementById("singleBgColor").value;
+      const vbDims = getProcessedSvgDimensions(svg);
+      const svgH = vbDims.height || 200;
+      const svgW = vbDims.width || 200;
+      const png = await exportSVGFrameAsPNG(svg, t, svgW, svgH, bg);
+      document.getElementById("preview").src = png;
+    });
+    // Carousel generation + download
+    let framesData = [];
+    document
+      .getElementById("generateCarousel")
+      .addEventListener("click", async () => {
+        const svg = document.getElementById("mysvg");
+        const totalDuration = parseFloat(
+          document.getElementById("durationInput").value
+        );
+        const fps = parseInt(document.getElementById("fpsInput").value, 10);
+        const useTrans = document.getElementById("carouselTransparent").checked;
+        const bg = useTrans ? null : document.getElementById("carouselBgColor").value;
+        const totalFrames = Math.ceil(totalDuration * fps);
+        const loading = document.getElementById("loading");
+        const progress = document.getElementById("progress");
+        const status = document.getElementById("status");
+        const container = document.getElementById("carousel-container");
+        const downloadBtn = document.getElementById("downloadZip");
+        container.innerHTML = "";
+        framesData = [];
+        downloadBtn.style.display = "none";
+        loading.style.display = "block";
+        let done = 0;
+        for (let i = 0; i < totalFrames; i++) {
+          const frameTime = Math.min(i / fps, totalDuration);
+          const vbDims = getProcessedSvgDimensions(svg);
+          const svgH = vbDims.height || 200;
+          const svgW = vbDims.width || 200;
+          const png = await exportSVGFrameAsPNG(svg, frameTime, svgW, svgH, bg);
+          framesData.push({
+            name: `frame${i + 1}.png`,
+            data: png
+          });
+          const item = document.createElement("div");
+          item.className = "carousel-item";
+          const img = document.createElement("img");
+          img.src = png;
+          img.className = "frame-img";
+          const fBadge = document.createElement("div");
+          fBadge.className = "badge frame";
+          fBadge.innerText = `#${i + 1}`;
+          const tBadge = document.createElement("div");
+          tBadge.className = "badge time";
+          tBadge.innerText = `${(i / fps).toFixed(2)}s`;
+          item.append(img, fBadge, tBadge);
+          container.appendChild(item);
+          done++;
+          progress.innerText = Math.round((done / totalFrames) * 100) + "%";
+        }
+        loading.style.display = "none";
+        status.innerText = `Generated ${totalFrames} frames.`;
+        downloadBtn.style.display = "block";
+      });
+    document.getElementById("downloadZip").addEventListener("click", () => {
+      const zip = new JSZip();
+      framesData.forEach((f) => {
+        const base64 = f.data.split(",")[1];
+        zip.file(f.name, base64, {
+          base64: true
+        });
+      });
+      zip
+        .generateAsync({
+          type: "blob"
+        })
+        .then((blob) => saveAs(blob, "carousel_frames.zip"));
+    });
+  </script>
+
+  <script type="module">
+    import {
+      GIFEncoder,
+      quantize,
+      applyPalette
+    } from 'https://unpkg.com/gifenc@1.0.3';
+    const generateBtn = document.getElementById('generateGifBtn');
+    const downloadBtn = document.getElementById('downloadGifBtn');
+    const previewImg = document.getElementById('gifPreview');
+    const statsDiv = document.getElementById('gifStats');
+    const delayInput = document.getElementById('gifDelayInput');
+    const infiniteChk = document.getElementById('gifInfinite');
+    const loopField = document.getElementById('gifLoopCountField');
+    const loopInput = document.getElementById('gifLoopCount');
+    let lastGif = null;
+    infiniteChk.addEventListener('change', () => {
+      loopField.style.display = infiniteChk.checked ? 'none' : 'block';
+    });
+    generateBtn.addEventListener('click', async () => {
+      generateBtn.disabled = downloadBtn.disabled = true;
+      generateBtn.textContent = 'Encoding…';
+      statsDiv.textContent = ' ';
+      // previewImg.removeAttribute('src');
+      const delay = parseInt(delayInput.value, 10) || 100;
+      const loop = infiniteChk.checked ? 0 : parseInt(loopInput.value, 10) || 1;
+      const urls = framesData.map(f => f.data);
+      try {
+        const result = await encodeToGif(urls, {
+          delay,
+          loop
+        });
+        lastGif = result;
+        statsDiv.textContent = `✅ Size: ${(result.size / 1024).toFixed(1)} KB | Duration: ${result.duration.toFixed(2)} s`;
+        previewImg.src = URL.createObjectURL(result.blob);
+        downloadBtn.disabled = false;
+        generateBtn.textContent = 'Re‑Generate GIF';
+      } catch (e) {
+        console.error(e);
+        statsDiv.textContent = '❌ Error generating GIF';
+        generateBtn.textContent = 'Generate GIF';
+        previewImg.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' height='200px' width='200px'%3E%3Crect height='100%25' width='100%25' fill='%23ccc' stroke='goldenrod' /%3E%3Ctext x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-size='8' font-family='Roboto, sans-serif'%3E❌ Generate Frames First%3C/text%3E%3C/svg%3E"
+      } finally {
+        generateBtn.disabled = false;
+      }
+    });
+    downloadBtn.addEventListener('click', () => {
+      if (!lastGif) return;
+      const url = URL.createObjectURL(lastGif.blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'animation.gif';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+    async function encodeToGif(urls, opts) {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const first = await loadImage(urls[0]);
+      canvas.width = first.width;
+      canvas.height = first.height;
+      const gif = GIFEncoder({
+        loop: opts.loop
+      });
+      const total = urls.length;
+      const duration = (opts.delay * total) / 1000;
+      for (let u of urls) {
+        const img = await loadImage(u);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+        const rgba = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        const fmt = 'rgba4444';
+        const pal = quantize(rgba, 256, {
+          format: fmt,
+          oneBitAlpha: true,
+          clearAlpha: false
+        });
+        // find palette index whose alpha === 0
+        const transparentIndex = pal.findIndex(c => c[3] === 0);
+        const idxs = applyPalette(rgba, pal, fmt);
+        // write frame with transparency enabled
+        gif.writeFrame(idxs, canvas.width, canvas.height, {
+          palette: pal,
+          delay: opts.delay,
+          transparent: true,
+          transparentIndex
+        });
+        await new Promise(r => setTimeout(r, 0));
+      }
+      gif.finish();
+      const bytes = gif.bytesView();
+      const blob = new Blob([bytes], {
+        type: 'image/gif'
+      });
+      return {
+        blob,
+        size: blob.size,
+        duration
+      };
+    }
+
+    function loadImage(src) {
+      return new Promise((res, rej) => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => res(img);
+        img.onerror = rej;
+        img.src = src;
+      });
+    }
+  </script>
+  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+  <script>
+      kofiWidgetOverlay.draw('leimapapa', {
+  'type': 'floating-chat',
+  'floating-chat.donateButton.text': 'Support me',
+  'floating-chat.donateButton.background-color': 'rgba(255, 255, 255, 0.1)',
+  'floating-chat.donateButton.text-color': '#fff'
+});
+</script>
+  <script type="module">
+  import { createNavbar } from 'https://leimolabs.com/navbar.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    createNavbar({ opacity: '0.8' });
+  });
+  </script>
+</body>
+
+</html>
