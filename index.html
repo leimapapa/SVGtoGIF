@@ -334,123 +334,123 @@
 
 <body>
   <h1>Animated SVG to GIF</h1>
-  <div class="container">
-  	<!-- SVG Display -->
-  	<div class="card">
-  		<svg id="mysvg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  			<g id="coolBean">
-  				<g class="bean">
-  					<path fill="brown" stroke="#fff" stroke-width="2" d="M 17 59 c -13 8 -13 39 15 35 a 50 50 0 0 0 31 -83 c -11 -11 -38 -4 -25 29 c 5 14 -9 11 -21 19z" />
-  					<path fill="rgba(255,255,255,0.5)" d="M 42 42 c 7 7 -2 16 -12 14 c 6 -2 14 -5 12 -14 z" />
-  				</g>
-  				<g class="glasses" transform="translate(0 -42)">
-  					<path fill="#000" d="M 10 24 h 90 v 7.5 h -4 v 3.5 h -3.5 v 3 h -3.5 v 3.5 h -24 v -3.5 h -3.5 v -3 h -3.5 v -7 h -6 v 7 h -3.5 v 3 h -3.5 v 3.5 h -24.5 v -3.5 h -3.5 v -3 h -3.5 v -3.5 h -3.5 z" />
-  					<path fill="#fff" d="M 17 28 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 0 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 31 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 0 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z" />
-  					<animateTransform attributeName="transform" type="translate" values="0 -42; 0 0" dur="3s" begin="0s" repeatCount="0" fill="freeze" keyTimes="0;1" keySplines="0.05 0.95 0.97 0.05" calcMode="spline" />
-  				</g>
-  			</g>
-  		</svg>
-  	</div>
-  
-  	<!-- Controls -->
-  	<div class="card controls">
-  		<h2>Controls</h2>
-  
-  		<label>
-  			<span>Use Example SVG</span>
-  			<button id="useExampleSvg" title="Load 'Cool Bean' SVG">Load Example</button>
-  		</label>
-  
-  		<div class="tab-container">
-  			<input type="radio" name="controlsTabs" id="pasteSvgRadio" checked hidden>
-  			<input type="radio" name="controlsTabs" id="importSvgRadio" hidden>
-  
-  			<div class="tab-buttons">
-  				<label for="pasteSvgRadio" class="tab-button">Paste SVG String</label>
-  				<label for="importSvgRadio" class="tab-button">Import SVG File</label>
-  			</div>
-  
-  			<div id="pasteSvgTabContent" class="tab-content">
-  				<label>
-  					<span>Paste raw SVG markup here...</span>
-  					<textarea id="svgTextInput" placeholder="<svg>...</svg>"></textarea>
-  					<button id="loadTextSvg">Load SVG</button>
-  				</label>
-  			</div>
-  
-  			<div id="importSvgTabContent" class="tab-content">
-  				<label>
-  					<span>Select an SVG file:</span>
-  					<input type="file" id="importSvgInput" accept=".svg">
-  				</label>
-  			</div>
-  		</div> <label>
-  			<span title="The value of the smallest of either the picture's height or width. Example: a 20 x 80 svg image will be scaled up to 200 x 800">Minimum pixel dimensions</span>
-  			<input type="number" id="pixelMinimumInput" value="200" step="10" min="100" max="1000">
-  		</label>
-  	</div>
-  
-  	<!-- Single Frame Export -->
-  	<div class="card controls">
-  		<h2>Export Frame</h2>
-  		<label>
-  			<span>Background</span>
-  			<div style="display:flex; align-items:center; gap:0.5rem;">
-  				<input type="checkbox" id="singleTransparent">
-  				<label for="singleTransparent" style="font-weight:400; margin:0;">Transparent</label>
-  				<input type="color" id="singleBgColor" value="#ffffff">
-  			</div>
-  		</label>
-  		<label>
-  			<span>Freeze at (seconds)</span>
-  			<input type="number" id="timeInput" value="1" step="0.1" min="0" max="3">
-  		</label>
-  		<button id="export">Export as PNG</button>
-  		<img id="preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' height='200px' width='200px'%3E%3Crect height='100%25' width='100%25' fill='%23ccc' stroke='goldenrod' /%3E%3Ctext x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-size='10' font-family='Roboto, sans-serif'%3EPNG Image Here%3C/text%3E%3C/svg%3E" alt="PNG preview will appear here" width="200">
-  	</div>
-  
-  	<!-- Carousel Generator -->
-  	<div class="card controls">
-  		<h2>Generate Frame Carousel</h2>
-  		<label>
-  			<span>Background</span>
-  			<div style="display:flex; align-items:center; gap:0.5rem;">
-  				<input type="checkbox" id="carouselTransparent">
-  				<label for="carouselTransparent" style="font-weight:400; margin:0;">Transparent</label>
-  				<input type="color" id="carouselBgColor" value="#ffffff">
-  			</div>
-  		</label>
-  		<label>
-  			<span>Total Duration (seconds)</span>
-  			<input type="number" id="durationInput" value="4" step="0.1" min="0.1">
-  		</label>
-  		<label>
-  			<span title="Frames per second">FPS</span>
-  			<input type="number" id="fpsInput" value="12" step="1" min="1" max="60">
-  		</label>
-  		<button id="generateCarousel">Generate</button>
-  		<button id="downloadZip" style="display:none; margin-top:0.5rem;">Download ZIP</button>
-  		<div class="loading" id="loading">Generating... <span id="progress">0%</span></div>
-  		<div class="status" id="status"></div>
-  		<div class="carousel-container" id="carousel-container"></div>
-  	</div>
-  
-  	<!-- GIF Generator -->
-  	<div class="card controls">
-  		<h2>Generate GIF</h2>
-  		<label><span>Additional Frame Delay (ms)</span><input type="number" id="gifDelayInput" value="0" min="1"></label>
-  		<div style="display:flex; align-items:center; gap:0.5rem;">
-  			<input type="checkbox" id="gifInfinite" checked>
-  			<label for="gifInfinite" style="font-weight:400; margin:0;">Infinite Loop</label>
-  		</div>
-  		<label id="gifLoopCountField" style="display:none;"><span>Loop Count</span><input type="number" id="gifLoopCount" min="1" value="1"></label>
-  		<button id="generateGifBtn">Generate GIF</button>
-  		<button id="downloadGifBtn" disabled>Download GIF</button>
-  		<img id="gifPreview" alt="GIF Preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' height='200px' width='200px'%3E%3Crect height='100%25' width='100%25' fill='%23ccc' stroke='goldenrod' /%3E%3Ctext x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-size='10' font-family='Roboto, sans-serif'%3EGIF Image Here%3C/text%3E%3C/svg%3E" alt="GIF preview will appear here" width="200">
-  		<div class="stats" id="gifStats">&nbsp;</div>
-  	</div>
+    <div class="container">
+	<!-- SVG Display -->
+	<div class="card">
+		<svg id="mysvg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+			<g id="coolBean">
+				<g class="bean">
+					<path fill="brown" stroke="#fff" stroke-width="2" d="M 17 59 c -13 8 -13 39 15 35 a 50 50 0 0 0 31 -83 c -11 -11 -38 -4 -25 29 c 5 14 -9 11 -21 19z" />
+					<path fill="rgba(255,255,255,0.5)" d="M 42 42 c 7 7 -2 16 -12 14 c 6 -2 14 -5 12 -14 z" />
+				</g>
+				<g class="glasses" transform="translate(0 -42)">
+					<path fill="#000" d="M 10 24 h 90 v 7.5 h -4 v 3.5 h -3.5 v 3 h -3.5 v 3.5 h -24 v -3.5 h -3.5 v -3 h -3.5 v -7 h -6 v 7 h -3.5 v 3 h -3.5 v 3.5 h -24.5 v -3.5 h -3.5 v -3 h -3.5 v -3.5 h -3.5 z" />
+					<path fill="#fff" d="M 17 28 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 0 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 31 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 0 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z" />
+					<animateTransform attributeName="transform" type="translate" values="0 -42; 0 0" dur="3s" begin="0s" repeatCount="0" fill="freeze" keyTimes="0;1" keySplines="0.05 0.95 0.97 0.05" calcMode="spline" />
+				</g>
+			</g>
+		</svg>
+	</div>
+
+	<!-- Controls -->
+	<div class="card controls">
+		<h2>Controls</h2>
+
+		<label>
+			<span>Use Example SVG</span>
+			<button id="useExampleSvg" title="Load 'Cool Bean' SVG">Load Example</button>
+		</label>
+
+		<div class="tab-container">
+			<input type="radio" name="controlsTabs" id="pasteSvgRadio" checked hidden>
+			<input type="radio" name="controlsTabs" id="importSvgRadio" hidden>
+
+			<div class="tab-buttons">
+				<label for="pasteSvgRadio" class="tab-button">Paste SVG String</label>
+				<label for="importSvgRadio" class="tab-button">Import SVG File</label>
+			</div>
+
+			<div id="pasteSvgTabContent" class="tab-content">
+				<label>
+					<span>Paste raw SVG markup here...</span>
+					<textarea id="svgTextInput" placeholder="<svg>...</svg>"></textarea>
+					<button id="loadTextSvg">Load SVG</button>
+				</label>
+			</div>
+
+			<div id="importSvgTabContent" class="tab-content">
+				<label>
+					<span>Select an SVG file:</span>
+					<input type="file" id="importSvgInput" accept=".svg">
+				</label>
+			</div>
+		</div> <label>
+			<span title="The value of the smallest of either the picture's height or width. Example: a 20 x 80 svg image will be scaled up to 200 x 800">Minimum pixel dimensions</span>
+			<input type="number" id="pixelMinimumInput" value="200" step="10" min="100" max="1000">
+		</label>
+	</div>
+
+	<!-- Carousel Generator -->
+	<div class="card controls">
+		<h2>Generate Frame Carousel</h2>
+		<label>
+			<span>Background</span>
+			<div style="display:flex; align-items:center; gap:0.5rem;">
+				<input type="checkbox" id="carouselTransparent" checked>
+				<label for="carouselTransparent" style="font-weight:400; margin:0;">Transparent</label>
+				<input type="color" id="carouselBgColor" value="#ffffff">
+			</div>
+		</label>
+		<label>
+			<span>Total Duration (seconds)</span>
+			<input type="number" id="durationInput" value="4" step="0.1" min="0.1">
+		</label>
+		<label>
+			<span title="Frames per second">FPS</span>
+			<input type="number" id="fpsInput" value="12" step="1" min="1" max="60">
+		</label>
+		<button id="generateCarousel">Generate</button>
+		<button id="downloadZip" style="display:none; margin-top:0.5rem;">Download ZIP</button>
+		<div class="loading" id="loading">Generating... <span id="progress">0%</span></div>
+		<div class="status" id="status"></div>
+		<div class="carousel-container" id="carousel-container"></div>
+	</div>
+
+	<!-- GIF Generator -->
+	<div class="card controls">
+		<h2>Generate GIF</h2>
+		<label><span>Additional Frame Delay (ms)</span><input type="number" id="gifDelayInput" value="0" min="1"></label>
+		<div style="display:flex; align-items:center; gap:0.5rem;">
+			<input type="checkbox" id="gifInfinite" checked>
+			<label for="gifInfinite" style="font-weight:400; margin:0;">Infinite Loop</label>
+		</div>
+		<label id="gifLoopCountField" style="display:none;"><span>Loop Count</span><input type="number" id="gifLoopCount" min="1" value="1"></label>
+		<button id="generateGifBtn">Generate GIF</button>
+		<button id="downloadGifBtn" disabled>Download GIF</button>
+		<img id="gifPreview" alt="GIF Preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' height='200px' width='200px'%3E%3Crect height='100%25' width='100%25' fill='%23ccc' stroke='goldenrod' /%3E%3Ctext x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-size='10' font-family='Roboto, sans-serif'%3EGIF Image Here%3C/text%3E%3C/svg%3E" alt="GIF preview will appear here" width="200">
+		<div class="stats" id="gifStats">&nbsp;</div>
+	</div>
+
+	<!-- Single Frame Export -->
+	<div class="card controls">
+		<h2>Export Single Frame</h2>
+		<label>
+			<span>Background</span>
+			<div style="display:flex; align-items:center; gap:0.5rem;">
+				<input type="checkbox" id="singleTransparent">
+				<label for="singleTransparent" style="font-weight:400; margin:0;">Transparent</label>
+				<input type="color" id="singleBgColor" value="#ffffff">
+			</div>
+		</label>
+		<label>
+			<span>Freeze at (seconds)</span>
+			<input type="number" id="timeInput" value="1" step="0.1" min="0" max="3">
+		</label>
+		<button id="export">Export as PNG</button>
+		<img id="preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' height='200px' width='200px'%3E%3Crect height='100%25' width='100%25' fill='%23ccc' stroke='goldenrod' /%3E%3Ctext x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-size='10' font-family='Roboto, sans-serif'%3EPNG Image Here%3C/text%3E%3C/svg%3E" alt="PNG preview will appear here" width="200">
+	</div>
   </div>
-  
+
   <!-- Hidden staging area -->
   <div id="staging-container" style="position:absolute; left:-9999px; top:-9999px;"></div>
 
