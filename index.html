@@ -12,180 +12,322 @@
     *,
     *::before,
     *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    	box-sizing: border-box;
+    	margin: 0;
+    	padding: 0;
     }
-
+    
     body {
-      font-family: "Segoe UI", Tahoma, sans-serif;
-      background: #f0f2f5;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' id='bp'%3E%3Cdefs%3E%3CradialGradient id='grad'%3E%3Cstop offset='0%25' stop-color='%23aaa' /%3E%3Cstop offset='100%25' stop-color='%23ccc' /%3E%3C/radialGradient%3E%3Cpattern id='grid' width='100' height='100' patternUnits='userSpaceOnUse' patternTransform='scale(0.5) skewY(10) skewX(-30)'%3E%3Cpath d='M10 0v100m10 0v-100m10 0v100m10 0v-100m10 0v100m10 0v-100m10 0v100m10 0v-100m10 0v100M0 10h100m0 10h-100m0 10h100m0 10h-100m0 10h100m0 10h-100m0 10h100m0 10h-100m0 10h100' fill='none' stroke='rgba(255,255,255,0.1)' /%3E%3Cpath d='M0 0l0 100 100 0 0-100z' fill='none' stroke='rgba(255,255,255,0.2)' /%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grad)' /%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)' /%3E%3C/svg%3E");
-      color: #333;
-      line-height: 1.5;
-      padding: 1rem;
+    	font-family: "Segoe UI", Tahoma, sans-serif;
+    	background: #f0f2f5;
+    	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' id='bp'%3E%3Cdefs%3E%3CradialGradient id='grad'%3E%3Cstop offset='0%25' stop-color='%23000' /%3E%3Cstop offset='100%25' stop-color='%23123' /%3E%3C/radialGradient%3E%3Cpattern id='grid' width='100' height='100' patternUnits='userSpaceOnUse' patternTransform='scale(0.5) skewY(10) skewX(-30)'%3E%3Cpath d='M10 0v100m10 0v-100m10 0v100m10 0v-100m10 0v100m10 0v-100m10 0v100m10 0v-100m10 0v100M0 10h100m0 10h-100m0 10h100m0 10h-100m0 10h100m0 10h-100m0 10h100m0 10h-100m0 10h100' fill='none' stroke='rgba(255,255,255,0.1)' /%3E%3Cpath d='M0 0l0 100 100 0 0-100z' fill='none' stroke='rgba(255,255,255,0.2)' /%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grad)' /%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)' /%3E%3C/svg%3E");
+    	color: #333;
+    	line-height: 1.5;
+    	padding: 1rem;
     }
-
+    
     h1 {
-      text-align: center;
-      margin-bottom: 1rem;
-      font-size: 2rem;
-      color: #444;
+    	text-align: center;
+    	margin-bottom: 1rem;
+    	font-size: 2rem;
+    	color: #ddd;
     }
-
+    #githubLogo {
+    	position: absolute;
+    	top: 5px;
+    	left: 5px;
+    }
     .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+    	max-width: 1000px;
+    	margin: 0 auto;
+    	display: grid;
+    	grid-template-columns: 1fr;
+    	gap: 1.5rem;
     }
-
+    
     @media (min-width: 768px) {
-      .container {
-        grid-template-columns: 1fr 1fr;
-      }
+    	.container {
+    		grid-template-columns: 1fr 1fr;
+    	}
     }
-
+    
     .card {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      padding: 1rem;
-      overflow: hidden;
+    	background: #fff;
+    	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' id='bp'%3E%3Cdefs%3E%3CradialGradient id='grad'%3E%3Cstop offset='0%25' stop-color='%23cde' /%3E%3Cstop offset='100%25' stop-color='%23eee' /%3E%3C/radialGradient%3E%3Cpattern id='grid' width='100' height='100' patternUnits='userSpaceOnUse' patternTransform='scale(0.5) skewY(10) skewX(-30)'%3E%3Cpath d='M10 0v100m10 0v-100m10 0v100m10 0v-100m10 0v100m10 0v-100m10 0v100m10 0v-100m10 0v100M0 10h100m0 10h-100m0 10h100m0 10h-100m0 10h100m0 10h-100m0 10h100m0 10h-100m0 10h100' fill='none' stroke='rgba(255,255,255,0.1)' /%3E%3Cpath d='M0 0l0 100 100 0 0-100z' fill='none' stroke='rgba(255,255,255,0.2)' /%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grad)' /%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)' /%3E%3C/svg%3E");
+    	border-radius: 8px;
+    	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    	padding: 1rem;
+    	overflow: hidden;
     }
-
+    
     .controls {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+    	display: flex;
+    	flex-direction: column;
+    	gap: 0.75rem;
     }
-
+    
     .controls label {
-      display: flex;
-      flex-direction: column;
-      font-weight: 500;
+    	display: flex;
+    	flex-direction: column;
+    	font-weight: 500;
     }
-
+    
     .controls label span {
-      margin-bottom: 0.25rem;
+    	margin-bottom: 0.25rem;
     }
-
+    
     .controls input[type="number"],
     .controls button,
     .controls input[type="color"],
     .controls textarea,
     .controls input[type="file"] {
-      font-family: inherit;
+    	font-family: inherit;
     }
-
+    
     button {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      padding: 0.6rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.2s ease;
+    	background-color: #007bff;
+    	color: #fff;
+    	border: none;
+    	padding: 0.6rem 1rem;
+    	border-radius: 4px;
+    	cursor: pointer;
+    	font-size: 1rem;
+    	transition: background 0.2s ease;
     }
-
+    
     button:hover {
-      background-color: #0056b3;
+    	background-color: #0056b3;
     }
-
+    
     textarea {
-      width: 100%;
-      min-height: 80px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 0.5rem;
-      resize: vertical;
+    	width: 100%;
+    	min-height: 80px;
+    	border: 1px solid #ccc;
+    	border-radius: 4px;
+    	padding: 0.5rem;
+    	resize: vertical;
     }
-
+    
     input[type="file"] {
-      padding: 0.3rem;
+    	padding: 0.3rem;
     }
-
+    
     #mysvg {
-      width: 100%;
-      height: auto;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      background: #fff;
+    	width: 100%;
+    	max-width: 100%;
+    	height: auto;
+    	border: 1px solid #ddd;
+    	border-radius: 4px;
     }
-
+    
     #preview,
     #gifPreview {
-      display: block;
-      margin: 0.5rem auto;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+    	display: block;
+    	margin: 0.5rem auto;
+    	border: 1px solid #ddd;
+    	border-radius: 4px;
     }
-
+    
+    /* Carousel stays within card width */
     .carousel-container {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      overflow-y: hidden;
-      width: 100%;
-      padding: 0.5rem 0;
+    	display: flex;
+    	flex-wrap: nowrap;
+    	overflow-x: auto;
+    	overflow-y: hidden;
+    	width: 100%;
+    	padding: 0.5rem 0;
     }
-
+    
     .carousel-container::-webkit-scrollbar {
-      height: 8px;
+    	height: 8px;
     }
-
+    
     .carousel-container::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 4px;
+    	background: rgba(0, 0, 0, 0.2);
+    	border-radius: 4px;
     }
-
+    
     .carousel-item {
-      flex: 0 0 auto;
-      position: relative;
-      margin-right: 0.5rem;
+    	flex: 0 0 auto;
+    	position: relative;
+    	margin-right: 0.5rem;
     }
-
+    
     .frame-img {
-      display: block;
-      border-radius: 4px;
+    	display: block;
+    	border-radius: 4px;
     }
-
+    
     .badge {
-      position: absolute;
-      background: rgba(0, 0, 0, 0.6);
-      color: #fff;
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-size: 0.75rem;
+    	position: absolute;
+    	background: rgba(0, 0, 0, 0.6);
+    	color: #fff;
+    	padding: 2px 6px;
+    	border-radius: 3px;
+    	font-size: 0.75rem;
     }
-
+    
     .badge.frame {
-      top: 5px;
-      left: 5px;
+    	top: 5px;
+    	left: 5px;
     }
-
+    
     .badge.time {
-      bottom: 5px;
-      right: 5px;
+    	bottom: 5px;
+    	right: 5px;
     }
-
+    
     .status {
-      text-align: center;
-      margin-top: 0.5rem;
-      font-weight: bold;
+    	text-align: center;
+    	margin-top: 0.5rem;
+    	font-weight: bold;
     }
-
+    
     .loading {
-      text-align: center;
-      display: none;
+    	text-align: center;
+    	display: none;
     }
-
-    .stats {
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 0.5rem;
+    
+    .card.controls {
+    	padding-top: 0;
+    	display: flex;
+    	flex-direction: column;
+    	gap: 0.75rem;
+    }
+    
+    .tab-container input[type="radio"] {
+    	display: none;
+    }
+    
+    .tab-buttons {
+    	display: flex;
+    	margin-bottom: 0.75rem;
+    	border-bottom: 1px solid #eee;
+    }
+    
+    .tab-button {
+    	flex-grow: 1;
+    	text-align: center;
+    	padding: 0.75rem 0.5rem;
+    	cursor: pointer;
+    	background-color: transparent;
+    	border: none;
+    	border-bottom: 2px solid transparent;
+    	font-size: 1rem;
+    	color: #555;
+    	transition: all 0.3s ease;
+    }
+    
+    .tab-button:hover {
+    	color: #007bff;
+    	border-color: #a0cfff;
+    }
+    
+    #pasteSvgRadio:checked ~ .tab-buttons .tab-button[for="pasteSvgRadio"],
+    #importSvgRadio:checked ~ .tab-buttons .tab-button[for="importSvgRadio"] {
+    	color: #007bff;
+    	border-bottom-color: #007bff;
+    }
+    
+    .tab-content {
+    	display: none;
+    	flex-direction: column;
+    	gap: 0.75rem;
+    }
+    
+    #pasteSvgRadio:checked ~ #pasteSvgTabContent,
+    #importSvgRadio:checked ~ #importSvgTabContent {
+    	display: flex;
+    }
+    
+    .tab-content label {
+    	display: flex;
+    	flex-direction: column;
+    	gap: 0.25rem;
+    }
+    
+    .tab-content label span {
+    	margin-bottom: 0;
+    }
+    
+    .controls textarea {
+    	width: 100%;
+    	min-height: 80px;
+    	border: 1px solid #ccc;
+    	border-radius: 4px;
+    	padding: 0.5rem;
+    	resize: vertical;
+    }
+    
+    #loadTextSvg {
+    	align-self: flex-start;
+    	margin-top: 0.25rem;
+    }
+    
+    #importSvgInput {
+    	padding: 0.5rem;
+    	border: 1px solid #ccc;
+    	border-radius: 4px;
+    }
+    
+    .controls label:has(#useExampleSvg) {
+    	display: flex;
+    	flex-direction: row;
+    	align-items: center;
+    	justify-content: space-between;
+    }
+    
+    .controls label:has(#useExampleSvg) span {
+    	margin-bottom: 0;
+    	margin-right: 1rem;
+    }
+    
+    .controls label > div {
+    	display: flex;
+    	align-items: center;
+    	gap: 0.5rem;
+    }
+    
+    .controls input[type="checkbox"] {
+    	margin: 0;
+    }
+    
+    .controls label[for="singleTransparent"],
+    .controls label[for="carouselTransparent"],
+    .controls label[for="gifInfinite"] {
+    	display: inline-flex;
+    	align-items: center;
+    	gap: 0.5rem;
+    	margin: 0;
+    }
+    
+    .controls label[for="singleTransparent"] span,
+    .controls label[for="carouselTransparent"] span,
+    .controls label[for="gifInfinite"] span {
+    	margin: 0;
+    }
+    
+    .controls input[type="number"] {
+    	padding: 0.5rem 0.75rem;
+    	border: 1px solid #ccc;
+    	border-radius: 4px;
+    	font-size: 1rem;
+    	line-height: 1.5;
+    	color: #333;
+    	background-color: #fff;
+    	transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    	width: auto;
+    }
+    
+    .controls input[type="number"]:focus {
+    	border-color: #80bdff;
+    	outline: 0;
+    	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    
+    .controls label:has(input[type="number"]) span {
+    	display: block;
+    	margin-bottom: 0.5rem;
     }
   </style>
 </head>
@@ -193,671 +335,1015 @@
 <body>
   <h1>Animated SVG to GIF</h1>
   <div class="container">
-    <!-- SVG Display -->
-    <div class="card">
-      <svg id="mysvg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <g id="coolBean">
-          <g class="bean">
-            <path fill="brown" stroke="#fff" stroke-width="2"
-              d="M 17 59 c -13 8 -13 39 15 35 a 50 50 0 0 0 31 -83 c -11 -11 -38 -4 -25 29 c 5 14 -9 11 -21 19z" />
-            <path fill="rgba(255,255,255,0.5)" d="M 42 42 c 7 7 -2 16 -12 14 c 6 -2 14 -5 12 -14 z" />
-          </g>
-          <g class="glasses" transform="translate(0 -42)">
-            <path fill="#000"
-              d="M 10 24 h 90 v 7.5 h -4 v 3.5 h -3.5 v 3 h -3.5 v 3.5 h -24 v -3.5 h -3.5 v -3 h -3.5 v -7 h -6 v 7 h -3.5 v 3 h -3.5 v 3.5 h -24.5 v -3.5 h -3.5 v -3 h -3.5 v -3.5 h -3.5 z" />
-            <path fill="#fff"
-              d="M 17 28 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 0 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 31 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 0 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z" />
-            <animateTransform attributeName="transform" type="translate" values="0 -42; 0 0" dur="3s" begin="0s"
-              repeatCount="0" fill="freeze" />
-          </g>
-        </g>
-      </svg>
-    </div>
-
-    <!-- Controls -->
-    <div class="card controls">
-      <h2>Controls</h2>
-      <label>
-        <span>Use Example SVG</span>
-        <button id="useExampleSvg">Load Example</button>
-      </label>
-      <label>
-        <span>Paste SVG String</span>
-        <textarea id="svgTextInput" placeholder="Paste raw SVG markup here..."></textarea>
-        <button id="loadTextSvg">Load SVG</button>
-      </label>
-      <label>
-        <span>Import SVG File</span>
-        <input type="file" id="importSvgInput" accept=".svg">
-      </label>
-      <br />
-      <label>
-        <span
-          title="The value of the smallest of either the picture's height or width. Example: a 20 x 80 svg image will be scaled up to 200 x 800">Minimum
-          pixel dimensions</span>
-        <input type="number" id="pixelMinimumInput" value="200" step="10" min="100" max="1000">
-      </label>
-    </div>
-
-    <!-- Single Frame Export -->
-    <div class="card controls">
-      <h2>Export Frame</h2>
-      <label>
-        <span>Background</span>
-        <div style="display:flex; align-items:center; gap:0.5rem;">
-          <input type="checkbox" id="singleTransparent">
-          <label for="singleTransparent" style="font-weight:400; margin:0;">Transparent</label>
-          <input type="color" id="singleBgColor" value="#ffffff">
-        </div>
-      </label>
-      <label>
-        <span>Freeze at (seconds)</span>
-        <input type="number" id="timeInput" value="1" step="0.1" min="0" max="3">
-      </label>
-      <button id="export">Export as PNG</button>
-      <img id="preview"
-        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' height='200px' width='200px'%3E%3Crect height='100%25' width='100%25' fill='%23ccc' stroke='goldenrod' /%3E%3Ctext x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-size='10' font-family='Roboto, sans-serif'%3EPNG Image Here%3C/text%3E%3C/svg%3E"
-        alt="PNG preview will appear here" width="200">
-    </div>
-
-    <!-- Carousel Generator -->
-    <div class="card controls">
-      <h2>Generate Frame Carousel</h2>
-      <label>
-        <span>Background</span>
-        <div style="display:flex; align-items:center; gap:0.5rem;">
-          <input type="checkbox" id="carouselTransparent">
-          <label for="carouselTransparent" style="font-weight:400; margin:0;">Transparent</label>
-          <input type="color" id="carouselBgColor" value="#ffffff">
-        </div>
-      </label>
-      <label>
-        <span>Total Duration (seconds)</span>
-        <input type="number" id="durationInput" value="4" step="0.1" min="0.1">
-
-        <label>
-          <span title="Frames per second">FPS</span>
-          <input type="number" id="fpsInput" value="12" step="1" min="1" max="60">
-        </label>
-        <br />
-        <button id="generateCarousel">Generate</button>
-        <button id="downloadZip" style="display:none; margin-top:0.5rem;">Download ZIP</button>
-        <div class="loading" id="loading">Generating... <span id="progress">0%</span></div>
-        <div class="status" id="status"></div>
-        <div class="carousel-container" id="carousel-container"></div>
-    </div>
-
-    <!-- GIF Generator -->
-    <div class="card controls">
-      <h2>Generate GIF</h2>
-      <label><span>Frame Delay (ms)</span><input type="number" id="gifDelayInput" value="100" min="1"></label>
-      <div style="display:flex; align-items:center; gap:0.5rem;">
-        <input type="checkbox" id="gifInfinite" checked>
-        <label for="gifInfinite" style="font-weight:400; margin:0;">Infinite Loop</label>
-      </div>
-      <label id="gifLoopCountField" style="display:none;"><span>Loop Count</span><input type="number" id="gifLoopCount"
-          min="1" value="1"></label>
-      <button id="generateGifBtn">Generate GIF</button>
-      <button id="downloadGifBtn" disabled>Download GIF</button>
-      <img id="gifPreview" alt="GIF Preview"
-        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' height='200px' width='200px'%3E%3Crect height='100%25' width='100%25' fill='%23ccc' stroke='goldenrod' /%3E%3Ctext x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-size='10' font-family='Roboto, sans-serif'%3EGIF Image Here%3C/text%3E%3C/svg%3E"
-        alt="GIF preview will appear here" width="200">
-      <div class="stats" id="gifStats">&nbsp;</div>
-    </div>
+  	<!-- SVG Display -->
+  	<div class="card">
+  		<svg id="mysvg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  			<g id="coolBean">
+  				<g class="bean">
+  					<path fill="brown" stroke="#fff" stroke-width="2" d="M 17 59 c -13 8 -13 39 15 35 a 50 50 0 0 0 31 -83 c -11 -11 -38 -4 -25 29 c 5 14 -9 11 -21 19z" />
+  					<path fill="rgba(255,255,255,0.5)" d="M 42 42 c 7 7 -2 16 -12 14 c 6 -2 14 -5 12 -14 z" />
+  				</g>
+  				<g class="glasses" transform="translate(0 -42)">
+  					<path fill="#000" d="M 10 24 h 90 v 7.5 h -4 v 3.5 h -3.5 v 3 h -3.5 v 3.5 h -24 v -3.5 h -3.5 v -3 h -3.5 v -7 h -6 v 7 h -3.5 v 3 h -3.5 v 3.5 h -24.5 v -3.5 h -3.5 v -3 h -3.5 v -3.5 h -3.5 z" />
+  					<path fill="#fff" d="M 17 28 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 0 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 31 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 0 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z" />
+  					<animateTransform attributeName="transform" type="translate" values="0 -42; 0 0" dur="3s" begin="0s" repeatCount="0" fill="freeze" keyTimes="0;1" keySplines="0.05 0.95 0.97 0.05" calcMode="spline" />
+  				</g>
+  			</g>
+  		</svg>
+  	</div>
+  
+  	<!-- Controls -->
+  	<div class="card controls">
+  		<h2>Controls</h2>
+  
+  		<label>
+  			<span>Use Example SVG</span>
+  			<button id="useExampleSvg" title="Load 'Cool Bean' SVG">Load Example</button>
+  		</label>
+  
+  		<div class="tab-container">
+  			<input type="radio" name="controlsTabs" id="pasteSvgRadio" checked hidden>
+  			<input type="radio" name="controlsTabs" id="importSvgRadio" hidden>
+  
+  			<div class="tab-buttons">
+  				<label for="pasteSvgRadio" class="tab-button">Paste SVG String</label>
+  				<label for="importSvgRadio" class="tab-button">Import SVG File</label>
+  			</div>
+  
+  			<div id="pasteSvgTabContent" class="tab-content">
+  				<label>
+  					<span>Paste raw SVG markup here...</span>
+  					<textarea id="svgTextInput" placeholder="<svg>...</svg>"></textarea>
+  					<button id="loadTextSvg">Load SVG</button>
+  				</label>
+  			</div>
+  
+  			<div id="importSvgTabContent" class="tab-content">
+  				<label>
+  					<span>Select an SVG file:</span>
+  					<input type="file" id="importSvgInput" accept=".svg">
+  				</label>
+  			</div>
+  		</div> <label>
+  			<span title="The value of the smallest of either the picture's height or width. Example: a 20 x 80 svg image will be scaled up to 200 x 800">Minimum pixel dimensions</span>
+  			<input type="number" id="pixelMinimumInput" value="200" step="10" min="100" max="1000">
+  		</label>
+  	</div>
+  
+  	<!-- Single Frame Export -->
+  	<div class="card controls">
+  		<h2>Export Frame</h2>
+  		<label>
+  			<span>Background</span>
+  			<div style="display:flex; align-items:center; gap:0.5rem;">
+  				<input type="checkbox" id="singleTransparent">
+  				<label for="singleTransparent" style="font-weight:400; margin:0;">Transparent</label>
+  				<input type="color" id="singleBgColor" value="#ffffff">
+  			</div>
+  		</label>
+  		<label>
+  			<span>Freeze at (seconds)</span>
+  			<input type="number" id="timeInput" value="1" step="0.1" min="0" max="3">
+  		</label>
+  		<button id="export">Export as PNG</button>
+  		<img id="preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' height='200px' width='200px'%3E%3Crect height='100%25' width='100%25' fill='%23ccc' stroke='goldenrod' /%3E%3Ctext x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-size='10' font-family='Roboto, sans-serif'%3EPNG Image Here%3C/text%3E%3C/svg%3E" alt="PNG preview will appear here" width="200">
+  	</div>
+  
+  	<!-- Carousel Generator -->
+  	<div class="card controls">
+  		<h2>Generate Frame Carousel</h2>
+  		<label>
+  			<span>Background</span>
+  			<div style="display:flex; align-items:center; gap:0.5rem;">
+  				<input type="checkbox" id="carouselTransparent" checked>
+  				<label for="carouselTransparent" style="font-weight:400; margin:0;">Transparent</label>
+  				<input type="color" id="carouselBgColor" value="#ffffff">
+  			</div>
+  		</label>
+  		<label>
+  			<span>Total Duration (seconds)</span>
+  			<input type="number" id="durationInput" value="4" step="0.1" min="0.1">
+  		</label>
+  		<label>
+  			<span title="Frames per second">FPS</span>
+  			<input type="number" id="fpsInput" value="12" step="1" min="1" max="60">
+  		</label>
+  		<button id="generateCarousel">Generate</button>
+  		<button id="downloadZip" style="display:none; margin-top:0.5rem;">Download ZIP</button>
+  		<div class="loading" id="loading">Generating... <span id="progress">0%</span></div>
+  		<div class="status" id="status"></div>
+  		<div class="carousel-container" id="carousel-container"></div>
+  	</div>
+  
+  	<!-- GIF Generator -->
+  	<div class="card controls">
+  		<h2>Generate GIF</h2>
+  		<label><span>Additional Frame Delay (ms)</span><input type="number" id="gifDelayInput" value="0" min="1"></label>
+  		<div style="display:flex; align-items:center; gap:0.5rem;">
+  			<input type="checkbox" id="gifInfinite" checked>
+  			<label for="gifInfinite" style="font-weight:400; margin:0;">Infinite Loop</label>
+  		</div>
+  		<label id="gifLoopCountField" style="display:none;"><span>Loop Count</span><input type="number" id="gifLoopCount" min="1" value="1"></label>
+  		<button id="generateGifBtn">Generate GIF</button>
+  		<button id="downloadGifBtn" disabled>Download GIF</button>
+  		<img id="gifPreview" alt="GIF Preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' height='200px' width='200px'%3E%3Crect height='100%25' width='100%25' fill='%23ccc' stroke='goldenrod' /%3E%3Ctext x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-size='10' font-family='Roboto, sans-serif'%3EGIF Image Here%3C/text%3E%3C/svg%3E" alt="GIF preview will appear here" width="200">
+  		<div class="stats" id="gifStats">&nbsp;</div>
+  	</div>
   </div>
-
+  
   <!-- Hidden staging area -->
   <div id="staging-container" style="position:absolute; left:-9999px; top:-9999px;"></div>
 
   <script>
     const DOMURL = window.URL || window.webkitURL || window;
     const exampleSvgMarkup = document.getElementById("mysvg").outerHTML;
-
+    
     function setSvgContent(markup) {
-      const wrapper = document.createElement("div");
-      wrapper.innerHTML = markup.trim();
-      const newSvg = wrapper.firstChild;
-      if (newSvg && newSvg.nodeName.toLowerCase() === "svg") {
-        document.getElementById("mysvg").replaceWith(newSvg);
-        newSvg.id = "mysvg";
-      }
+    	const wrapper = document.createElement("div");
+    	wrapper.innerHTML = markup.trim();
+    	const newSvg = wrapper.firstChild;
+    	if (newSvg && newSvg.nodeName.toLowerCase() === "svg") {
+    		document.getElementById("mysvg").replaceWith(newSvg);
+    		newSvg.id = "mysvg";
+    	}
     }
     document
-      .getElementById("useExampleSvg")
-      .addEventListener("click", () => setSvgContent(exampleSvgMarkup));
+    	.getElementById("useExampleSvg")
+    	.addEventListener("click", () => setSvgContent(exampleSvgMarkup));
     document.getElementById("loadTextSvg").addEventListener("click", () => {
-      const text = document.getElementById("svgTextInput").value;
-      if (text.trim()) setSvgContent(text);
+    	const text = document.getElementById("svgTextInput").value;
+    	if (text.trim()) setSvgContent(text);
     });
     document.getElementById("importSvgInput").addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => setSvgContent(reader.result);
-      reader.readAsText(file);
+    	const file = e.target.files[0];
+    	if (!file) return;
+    	const reader = new FileReader();
+    	reader.onload = () => setSvgContent(reader.result);
+    	reader.readAsText(file);
     });
     // Toggle color inputs when transparent selected
     document.getElementById("singleTransparent").addEventListener("change", (e) => {
-      document.getElementById("singleBgColor").disabled = e.target.checked;
+    	document.getElementById("singleBgColor").disabled = e.target.checked;
     });
     document
-      .getElementById("carouselTransparent")
-      .addEventListener("change", (e) => {
-        document.getElementById("carouselBgColor").disabled = e.target.checked;
-      });
+    	.getElementById("carouselTransparent")
+    	.addEventListener("change", (e) => {
+    		document.getElementById("carouselBgColor").disabled = e.target.checked;
+    	});
+    
     /**
-      * Converts a single frame of an animated SVG into a PNG data URL
-      * by calculating the state of animations at a specific time 't'.
-      *
-      * @param {SVGSVGElement} svg The SVG element to export.
-      * @param {number} t The time in seconds for which to capture the frame.
-      * @param {number} width The desired width of the output PNG.
-      * @param {number} height The desired height of the output PNG.
-      * @param {string|null} bgColor The background color of the PNG canvas, or null for transparent.
-      * @returns {Promise<string>} A promise that resolves with the PNG data URL.
-      */
+     * Parses a semicolon-separated string of numbers (like keyTimes) into an array of floats.
+     * Filters out invalid numbers.
+     * @param {string | null} keyTimesString The keyTimes string.
+     * @returns {number[]} An array of parsed key times.
+     */
+    function parseKeyTimes(keyTimesString) {
+    	if (!keyTimesString) {
+    		return [];
+    	}
+    	return keyTimesString.split(';').map(s => parseFloat(s.trim())).filter(n => !isNaN(n));
+    }
+    
     /**
-      * Converts a single frame of an animated SVG into a PNG data URL
-      * by calculating the state of animations at a specific time 't',
-      * now including handling for infinitely repeating animations.
-      *
-      * @param {SVGSVGElement} svg The SVG element to export.
-      * @param {number} t The time in seconds for which to capture the frame.
-      * @param {number} width The desired width of the output PNG.
-      * @param {number} height The desired height of the output PNG.
-      * @param {string|null} bgColor The background color of the PNG canvas, or null for transparent.
-      * @returns {Promise<string>} A promise that resolves with the PNG data URL.
-      */
+     * Parses a semicolon-separated string of cubic-bezier control points (like keySplines)
+     * into an array of arrays, where each inner array is [x1, y1, x2, y2].
+     * Filters out invalid control point sets.
+     * @param {string | null} keySplinesString The keySplines string.
+     * @returns {Array<[number, number, number, number]>} An array of control point sets.
+     */
+    function parseKeySplines(keySplinesString) {
+    	if (!keySplinesString) {
+    		return [];
+    	}
+    	return keySplinesString.split(';').map(splineStr => {
+    		const points = splineStr.trim().split(/[\s,]+/).map(s => parseFloat(s.trim())).filter(n => !isNaN(n));
+    		if (points.length === 4) {
+    			return [points[0], points[1], points[2], points[3]];
+    		}
+    		console.warn("Invalid keySplines format:", splineStr);
+    		return null;
+    	}).filter(spline => spline !== null);
+    }
+    
+    /**
+     * Calculates the y value for a given x value on a cubic Bézier curve defined by
+     * control points (x1, y1) and (x2, y2), with start (0,0) and end (1,1).
+     * Uses a numerical approach (binary search) to find the parameter 't' that corresponds to the given x.
+     * @param {number} x The x-coordinate (time progress) on the curve, between 0 and 1.
+     * @param {number} x1 The x-coordinate of the first control point.
+     * @param {number} y1 The y-coordinate of the first control point.
+     * @param {number} x2 The x-coordinate of the second control point.
+     * @param {number} y2 The y-coordinate of the second control point.
+     * @returns {number} The corresponding y-coordinate (eased progress) on the curve, between 0 and 1.
+     */
+    function getCubicBezierInterpolation(x, x1, y1, x2, y2) {
+        // Handle edge cases for x = 0 or x = 1
+        if (x <= 0) return 0;
+        if (x >= 1) return 1;
+    
+        // Function to get the x coordinate on the Bézier curve for parameter t
+        const sampleCurveX = (t) => {
+            // `Ax = 3 * p1x - 3 * p2x + 1`
+            // `Bx = 3 * p2x - 6 * p1x`
+            // `Cx = 3 * p1x`
+            // `x(t) = Ax * t^3 + Bx * t^2 + Cx * t`
+            let Ax = 3.0 * x1 - 3.0 * x2 + 1.0;
+            let Bx = 3.0 * x2 - 6.0 * x1;
+            let Cx = 3.0 * x1;
+            return ((Ax * t + Bx) * t + Cx) * t;
+        };
+    
+        // Function to get the y coordinate on the Bézier curve for parameter t
+        const sampleCurveY = (t) => {
+            // `Ay = 3 * p1y - 3 * p2y + 1`
+            // `By = 3 * p2y - 6 * p1y`
+            // `Cy = 3 * p1y`
+            // `y(t) = Ay * t^3 + By * t^2 + Cy * t`
+            let Ay = 3.0 * y1 - 3.0 * y2 + 1.0;
+            let By = 3.0 * y2 - 6.0 * y1;
+            let Cy = 3.0 * y1;
+            return ((Ay * t + By) * t + Cy) * t;
+        };
+    
+        // Use binary search to find the parameter t for the given x
+        let lower = 0.0;
+        let upper = 1.0;
+        let t = x; // Initial guess
+    
+        for (let i = 0; i < 10; i++) { // Iterate a fixed number of times for performance
+            let currentX = sampleCurveX(t);
+            if (Math.abs(currentX - x) < 0.001) { // Tolerance
+                break;
+            }
+            if (currentX < x) {
+                lower = t;
+            } else {
+                upper = t;
+            }
+            t = (upper - lower) * 0.5 + lower;
+        }
+    
+        // Return the y coordinate for the found t
+        return sampleCurveY(t);
+    }
+    
+    
+    /**
+     * Converts a single frame of an animated SVG into a PNG data URL
+     * by calculating the state of animations at a specific time 't'.
+     * Now supports calcMode (discrete, linear, spline) and keySplines.
+     *
+     * @param {SVGSVGElement} svg The SVG element to export.
+     * @param {number} t The time in seconds for which to capture the frame.
+     * @param {number} width The desired width of the output PNG.
+     * @param {number} height The desired height of the output PNG.
+     * @param {string|null} bgColor The background color of the PNG canvas, or null for transparent.
+     * @returns {Promise<string>} A promise that resolves with the PNG data URL.
+     */
     async function exportSVGFrameAsPNG(
-      svg,
-      t, // current time in seconds
-      width = 200,
-      height = 200,
-      bgColor = "#ffffff"
+    	svg,
+    	t, // current time in seconds
+    	width = 200,
+    	height = 200,
+    	bgColor = "#ffffff"
     ) {
-      // Clone the SVG to avoid modifying the original and work with a clean slate for the frame
-      const stagingSvg = svg.cloneNode(true);
-      // Use a staging container to add the cloned SVG to the DOM temporarily
-      const stagingContainer = document.getElementById("staging-container");
-      if (!stagingContainer) {
-        console.error("Staging container element not found. Please create an element with id 'staging-container'.");
-        // Create a temporary container if it doesn't exist, though a pre-existing one is better for performance
-        const tempContainer = document.createElement('div');
-        tempContainer.id = 'staging-container';
-        tempContainer.style.cssText = 'position: absolute; left: -9999px; top: -9999px; width: 0; height: 0; overflow: hidden;';
-        document.body.appendChild(tempContainer);
-        stagingContainer = tempContainer;
-      }
-      stagingContainer.innerHTML = ""; // Clear previous content
-      stagingContainer.appendChild(stagingSvg);
-      // Select all relevant animation elements
-      const animations = stagingSvg.querySelectorAll("animate, animateTransform, animateMotion, set");
-      animations.forEach((anim) => {
-        const target = anim.parentNode;
-        // Ensure the target element exists before attempting to modify it
-        if (!target || target.nodeType !== Node.ELEMENT_NODE) {
-          console.warn("Animation element found without a valid target element:", anim);
-          return; // Skip this animation
-        }
-        const tagName = anim.tagName.toLowerCase();
-        const durAttr = anim.getAttribute("dur");
-        // Handle indefinite durations and missing dur attributes as Infinity
-        const dur = (durAttr === "indefinite" || !durAttr) ? Infinity : parseFloat(durAttr);
-        const begin = parseFloat(anim.getAttribute("begin")) || 0; // Default begin time is 0
-        const values = anim.getAttribute("values");
-        const from = anim.getAttribute("from");
-        const to = anim.getAttribute("to");
-        const attributeName = anim.getAttribute("attributeName");
-        const elapsed = t - begin;
-        const fill = anim.getAttribute('fill'); // 'freeze' or 'remove' (default)
-        const repeatCount = anim.getAttribute('repeatCount');
-        const repeatDur = anim.getAttribute('repeatDur');
-        let active = false;
-        let progress = 0; // Normalized time (0 to 1) within the active duration or cycle
-        let interpolatedValue = null; // The calculated attribute value at time 't'
-        // --- Determine if the animation is active and calculate progress ---
-        // Check for indefinite repetition
-        const isRepeatingIndefinitely = (repeatCount === 'indefinite' || repeatDur === 'indefinite');
-        if (elapsed >= 0) { // Animation has started or is potentially repeating
-          if (isRepeatingIndefinitely && dur !== Infinity && dur > 0) {
-            // Animation repeats infinitely, calculate effective time within the current cycle
-            const effectiveElapsed = elapsed % dur;
-            progress = effectiveElapsed / dur;
-            active = true; // Always active if repeating indefinitely after begin time
-            // For repeating animations, fill="freeze" after the duration of a single cycle doesn't apply in the same way.
-            // The animation just restarts. So we treat it as active as long as elapsed >= 0.
-          } else if (elapsed < dur) {
-            // Animation is active within its single duration
-            active = true;
-            progress = elapsed / dur;
-          } else if (fill === 'freeze' && elapsed >= dur) {
-            // Animation has finished but fill="freeze", apply the end value
-            active = true; // Treat as active to get the final state
-            progress = 1; // At the very end of the animation
-          }
-          // If not repeating indefinitely, not within duration, and not frozen, it's not active.
-        }
-        // If the animation is not active at this time, skip processing it
-        if (!active) {
-          return;
-        }
-        // Determine the start and end values for interpolation based on 'values' or 'from'/'to'
-        let startValue = null;
-        let endValue = null;
-        if (values) {
-          const valueList = values.split(";").map(v => v.trim());
-          if (valueList.length > 0) {
-            // For simplicity, using the first and last values for linear interpolation over the whole duration.
-            // Handling keyTimes and multiple intermediate values would require more complex logic
-            // to find the correct value interval and local progress within that interval.
-            // When repeating, the 'progress' calculated using modulo already gives the position within the cycle.
-            startValue = valueList[0];
-            endValue = valueList[valueList.length - 1];
-            // If animation is frozen (and not repeating indefinitely), ensure we use the last value from 'values'
-            if (progress === 1 && fill === 'freeze' && !isRepeatingIndefinitely) {
-              startValue = valueList[valueList.length - 1]; // Effectively sets both to the final value
-              endValue = valueList[valueList.length - 1];
-            } else if (progress === 0 && elapsed >= 0 && !isRepeatingIndefinitely) {
-              // If at the start (progress 0) and not repeating, ensure we use the first value
-              endValue = valueList[0]; // Sets both to the start value
-              startValue = valueList[0];
-            } else if (valueList.length > 2 && !isRepeatingIndefinitely) {
-              // Basic handling for multiple values (without keyTimes/keySplines): Find the relevant interval based on progress.
-              const valueIndex = Math.min(Math.floor(progress * (valueList.length - 1)), valueList.length - 2);
-              const localProgress = (progress * (valueList.length - 1)) - valueIndex; // Progress within the interval
-              startValue = valueList[valueIndex];
-              endValue = valueList[valueIndex + 1];
-              progress = localProgress; // Use local progress for interpolation
-            } else if (valueList.length > 2 && isRepeatingIndefinitely) {
-              // Basic handling for multiple values with indefinite repeat:
-              // Find the relevant interval based on the progress within the cycle.
-              const valueIndex = Math.min(Math.floor(progress * (valueList.length - 1)), valueList.length - 2);
-              const localProgress = (progress * (valueList.length - 1)) - valueIndex;
-              startValue = valueList[valueIndex];
-              endValue = valueList[valueIndex + 1];
-              progress = localProgress; // Use local progress for interpolation within the interval
-            }
-          }
-        } else if (from !== null && to !== null) {
-          startValue = from;
-          endValue = to;
-          // If animation is frozen (and not repeating indefinitely), ensure we use the 'to' value
-          if (progress === 1 && fill === 'freeze' && !isRepeatingIndefinitely) {
-            startValue = to; // Set both to 'to' if frozen
-          } else if (progress === 0 && elapsed >= 0 && !isRepeatingIndefinitely) {
-            // If at the start and not repeating, ensure we use the 'from' value
-            endValue = from; // Set both to 'from'
-          }
-        } else {
-          // Cannot determine start and end values for interpolation
-          console.warn(`Animation on '${attributeName}' lacks sufficient 'values' or 'from'/'to' attributes.`);
-          return;
-        }
-        // --- Perform Interpolation Based on Animation Type and Attribute ---
-        // (This part remains largely the same, using the calculated 'progress')
-        if (tagName === "animatetransform") {
-          const type = anim.getAttribute("type");
-          if (startValue !== null && endValue !== null) {
-            if (type === "translate") {
-              const startCoords = startValue.split(/\s|,/).map(parseFloat).filter(n => !isNaN(n));
-              const endCoords = endValue.split(/\s|,/).map(parseFloat).filter(n => !isNaN(n));
-              if (startCoords.length === endCoords.length && startCoords.length > 0) {
-                const interpolatedCoords = startCoords.map((start, i) =>
-                  start + (endCoords[i] - start) * progress
-                );
-                interpolatedValue = `${type}(${interpolatedCoords.join(" ")})`; // Use the type in the transform string
-              }
-            }
-            // Add handling for other transform types: rotate, scale, skewX, skewY
-            // This would require parsing their specific value formats.
-          }
-        } else if (tagName === "animate") {
-          if (attributeName && startValue !== null && endValue !== null) {
-            if (attributeName === "d") {
-              // --- Handling 'd' attribute animation (Path Morphing) ---
-              // Basic interpolation attempt - will only work for paths with identical structure.
-              // Robust path morphing requires a dedicated library.
-              try {
-                const parsePathData = (pathString) => {
-                  const commands = pathString.match(/[a-df-zA-DF-Z][^a-df-zA-DF-Z]*/g) || [];
-                  return commands.map(cmd => {
-                    const type = cmd[0];
-                    const params = (cmd.substring(1).trim().match(/[+-]?(\d*\.\d+|\d+\.?)([eE][+-]?\d+)?/g) || []).map(parseFloat).filter(n => !isNaN(n));
-                    return {
-                      type,
-                      params
-                    };
-                  });
-                };
-                const interpolateParameters = (startParams, endParams, progress) => {
-                  const interpolated = [];
-                  const len = Math.min(startParams.length, endParams.length);
-                  for (let i = 0; i < len; i++) {
-                    interpolated.push(startParams[i] + (endParams[i] - startParams[i]) * progress);
-                  }
-                  return interpolated;
-                };
-                const buildPathStringFromCommands = (interpolatedCommands) => {
-                  return interpolatedCommands.map(cmd => {
-                    const formattedParams = cmd.params.map(p => parseFloat(p.toFixed(4))).join(" ");
-                    return cmd.type + formattedParams;
-                  }).join("");
-                };
-                const startPath = parsePathData(startValue);
-                const endPath = parsePathData(endValue);
-                if (startPath.length === endPath.length) {
-                  const interpolatedCommands = [];
-                  let canInterpolate = true;
-                  for (let i = 0; i < startPath.length; i++) {
-                    const startCmd = startPath[i];
-                    const endCmd = endPath[i];
-                    if (startCmd.type === endCmd.type && startCmd.params.length === endCmd.params.length) {
-                      interpolatedCommands.push({
-                        type: startCmd.type,
-                        params: interpolateParameters(startCmd.params, endCmd.params, progress)
-                      });
-                    } else {
-                      console.warn(`Cannot interpolate path command at index ${i} due to type or parameter mismatch.`);
-                      canInterpolate = false;
-                      break;
-                    }
-                  }
-                  if (canInterpolate) {
-                    interpolatedValue = buildPathStringFromCommands(interpolatedCommands);
-                  } else {
-                    console.warn("Path interpolation failed due to command mismatch. Using start path data.");
-                    interpolatedValue = startValue;
-                  }
-                } else {
-                  console.warn("Path command count mismatch. Cannot perform simple interpolation for 'd' attribute.");
-                  interpolatedValue = startValue;
-                }
-              } catch (e) {
-                console.error("Error during 'd' attribute interpolation:", e);
-                interpolatedValue = startValue; // Fallback on error
-              }
-              // --- End of 'd' attribute handling ---
+    	// Clone the SVG to avoid modifying the original and work with a clean slate for the frame
+    	const stagingSvg = svg.cloneNode(true);
+    
+    	// Use a staging container to add the cloned SVG to the DOM temporarily
+    	const stagingContainer = document.getElementById("staging-container");
+    	if (!stagingContainer) {
+    		console.error("Staging container element not found. Please create an element with id 'staging-container'.");
+    		// Create a temporary container if it doesn't exist, though a pre-existing one is better for performance
+    		const tempContainer = document.createElement('div');
+    		tempContainer.id = 'staging-container';
+    		tempContainer.style.cssText = 'position: absolute; left: -9999px; top: -9999px; width: 0; height: 0; overflow: hidden;';
+    		document.body.appendChild(tempContainer);
+    		stagingContainer = tempContainer;
+    	}
+    	stagingContainer.innerHTML = ""; // Clear previous content
+    	stagingContainer.appendChild(stagingSvg);
+    
+    	// Select all relevant animation elements
+    	const animations = stagingSvg.querySelectorAll("animate, animateTransform, animateMotion, set");
+    
+    	animations.forEach((anim) => {
+    		const target = anim.parentNode;
+    		// Ensure the target element exists before attempting to modify it
+    		if (!target || target.nodeType !== Node.ELEMENT_NODE) {
+    			console.warn("Animation element found without a valid target element:", anim);
+    			return; // Skip this animation
+    		}
+    
+    		const tagName = anim.tagName.toLowerCase();
+    		const durAttr = anim.getAttribute("dur");
+    		// Handle indefinite durations and missing dur attributes as Infinity
+    		const dur = (durAttr === "indefinite" || !durAttr) ? Infinity : parseFloat(durAttr);
+    		const begin = parseFloat(anim.getAttribute("begin")) || 0; // Default begin time is 0
+    		const values = anim.getAttribute("values");
+    		const from = anim.getAttribute("from");
+    		const to = anim.getAttribute("to");
+    		const attributeName = anim.getAttribute("attributeName");
+    		const calcMode = anim.getAttribute("calcMode") || (values ? "linear" : "paced"); // Default based on spec
+    		const keyTimes = parseKeyTimes(anim.getAttribute("keyTimes"));
+    		const keySplines = parseKeySplines(anim.getAttribute("keySplines"));
+    		const fill = anim.getAttribute('fill'); // 'freeze' or 'remove' (default)
+    		const repeatCount = anim.getAttribute('repeatCount');
+    		const repeatDur = anim.getAttribute('repeatDur');
+    
+    		const elapsed = t - begin;
+    
+    		let active = false;
+    		let normalizedTime = 0; // Normalized time (0 to 1) within the active duration or cycle
+    		let interpolatedValue = null; // The calculated attribute value at time 't'
+    
+    		// --- Determine if the animation is active and calculate normalized time within cycle ---
+    
+    		const isRepeatingIndefinitely = (repeatCount === 'indefinite' || repeatDur === 'indefinite');
+    		const hasFiniteDuration = dur !== Infinity && dur > 0;
+    
+    		if (elapsed >= 0) { // Animation has started or is potentially repeating
+                if (hasFiniteDuration) {
+                    const totalRepeatDuration = isRepeatingIndefinitely ? Infinity : dur * (parseFloat(repeatCount) || 1);
+                     if (elapsed < totalRepeatDuration || totalRepeatDuration === Infinity) {
+    					// If repeating indefinitely or within the finite repeat duration,
+    					// calculate the time within the current cycle.
+    					normalizedTime = (elapsed % dur) / dur;
+    					active = true;
+                     } else if (fill === 'freeze' && elapsed >= totalRepeatDuration) {
+                         // Animation finished but fill="freeze", apply the end value (which is the end of the last cycle)
+                         active = true;
+                         normalizedTime = 1; // At the very end of the last cycle
+                     }
+                } else if (fill === 'freeze' && elapsed >= 0 && dur === Infinity) {
+                    // Indefinite duration animation with freeze, it just stays active
+                    active = true;
+                    // Normalized time is still 0 as there's no duration to normalize against
+                    normalizedTime = 0; // Or maybe 1 if 'to' value is applied? Let's stick to 0 if indefinite duration.
+    				// For indefinite duration and fill="freeze", the 'to' value is effectively held from "https://esm.sh/begin" time onwards.
+    				if (to !== null) {
+    					target.setAttribute(attributeName, to);
+    					interpolatedValue = null; // Indicate attribute was set
+    					return; // Skip further interpolation
+    				} else if (values && values.split(';').length > 0) {
+    					// If values are present, the last value is held.
+    					const valueList = values.split(';').map(v => v.trim());
+    					target.setAttribute(attributeName, valueList[valueList.length - 1]);
+    					interpolatedValue = null; // Indicate attribute was set
+    					return; // Skip further interpolation
+    				} else {
+    					// If neither 'to' nor 'values', freeze behavior is undefined, use 'from' if available
+    					if (from !== null) {
+    						target.setAttribute(attributeName, from);
+    						interpolatedValue = null; // Indicate attribute was set
+    						return; // Skip further interpolation
+    					}
+    				}
+    
+                } else if (elapsed >= 0 && dur === Infinity) {
+    				// Indefinite duration animation without freeze, stays active
+    				active = true;
+    				// Normalized time is still 0 as there's no duration to normalize against
+    				normalizedTime = 0;
+    				// The 'from' value is held from "https://esm.sh/begin" time onwards for indefinite, non-freezing animations
+    				if (from !== null) {
+    					target.setAttribute(attributeName, from);
+    					interpolatedValue = null; // Indicate attribute was set
+    					return; // Skip further interpolation
+    				} else if (values && values.split(';').length > 0) {
+    					// If values are present, the first value is held.
+    					const valueList = values.split(';').map(v => v.trim());
+    					target.setAttribute(attributeName, valueList[0]);
+    					interpolatedValue = null; // Indicate attribute was set
+    					return; // Skip further interpolation
+    				}
+    			}
+    		}
+    
+    
+    		// If the animation is not active at this time, skip processing it
+    		if (!active) {
+    			// If the animation is not active and fill is not freeze, the attribute might revert
+    			// to its original value or a CSS value. Simulating this is complex.
+    			// For now, we just don't apply any animated value if not active.
+    			// If fill was "remove", the attribute state effectively goes back to what it was before the animation.
+    			// We don't have the original state here, so we just leave it as is (which might be the state
+    			// from a previous frame's calculation if the element was reused).
+    			// A more robust solution would involve storing/restoring original attributes.
+    			return;
+    		}
+    
+    		// Determine the values and interpolation based on calcMode, keyTimes, and keySplines
+    
+    		let valueList = [];
+    		if (values) {
+    			valueList = values.split(";").map(v => v.trim());
+    		} else if (from !== null && to !== null) {
+    			// If only from/to are provided, treat it as a linear animation with 2 values at keyTimes 0 and 1
+    			valueList = [from, to];
+    			if (keyTimes.length === 0) { // Only add default keyTimes if not provided
+    				keyTimes.push(0, 1);
+    			}
+    		} else if (to !== null) {
+                 // If only 'to' is provided, and 'from' is missing, and 'values' is missing,
+                 // the start value is the base value of the attribute.
+                 // We don't have the base value easily here. This case is complex.
+                 // For simplicity, we might treat it as a 'set' at time 'begin' to the 'to' value if dur is short/zero,
+                 // or attempt to read the current attribute value as 'from' if it exists before animation starts.
+                 // Let's skip complex base value determination and warn.
+                 console.warn(`Animation on '${attributeName}' has 'to' but no 'from' or 'values'. Base value determination is not supported.`);
+                 return; // Cannot proceed without clear start/end values
             } else {
-              // Handle other attributes (e.g., opacity, r, cx, cy, width, height, colors)
-              // Attempt numeric interpolation first
-              const startNum = parseFloat(startValue);
-              const endNum = parseFloat(endValue);
-              if (!isNaN(startNum) && !isNaN(endNum)) {
-                // Simple numeric interpolation
-                interpolatedValue = startNum + (endNum - startNum) * progress;
-                target.setAttribute(attributeName, interpolatedValue.toString()); // Set directly
-                interpolatedValue = null; // Indicate attribute was set
-              } else {
-                // Handle color interpolation (basic hex color support)
-                if (/^#([0-9A-F]{3}){1,2}$/i.test(startValue) && /^#([0-9A-F]{3}){1,2}$/i.test(endValue)) {
-                  try {
-                    const hexToRgb = (hex) => {
-                      const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-                      hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
-                      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-                      return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null;
-                    };
-                    const rgbToHex = (r, g, b) => {
-                      const toHex = (c) => {
-                        const hex = Math.round(Math.max(0, Math.min(255, c))).toString(16); // Clamp and round
-                        return hex.length === 1 ? "0" + hex : hex;
-                      };
-                      return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-                    };
-                    const startRgb = hexToRgb(startValue);
-                    const endRgb = hexToRgb(endValue);
-                    if (startRgb && endRgb) {
-                      const interpolatedRgb = startRgb.map((start, i) =>
-                        start + (endRgb[i] - start) * progress
-                      );
-                      interpolatedValue = rgbToHex(interpolatedRgb[0], interpolatedRgb[1], interpolatedRgb[2]);
-                      target.setAttribute(attributeName, interpolatedValue); // Set directly
-                      interpolatedValue = null; // Indicate attribute was set
+    			// Cannot determine start and end values for interpolation
+    			console.warn(`Animation on '${attributeName}' lacks sufficient 'values' or 'from'/'to' attributes.`);
+    			return;
+    		}
+    
+    		// Validate keyTimes and keySplines lengths
+    		if (keyTimes.length > 0 && keyTimes.length !== valueList.length) {
+    			console.warn(`keyTimes length (${keyTimes.length}) does not match values length (${valueList.length}) for attribute '${attributeName}'. Ignoring animation.`);
+    			return;
+    		}
+    		if (keySplines.length > 0 && keySplines.length !== Math.max(1, valueList.length - 1)) {
+    			console.warn(`keySplines length (${keySplines.length}) does not match the number of intervals (${Math.max(1, valueList.length - 1)}) for attribute '${attributeName}'. Ignoring animation.`);
+    			return;
+    		}
+    
+    
+    		let intervalIndex = 0;
+    		let localProgress = 0; // Progress within the current interval (0 to 1)
+    
+    		if (valueList.length > 1 && keyTimes.length === valueList.length) {
+    			// Find the current interval based on normalizedTime and keyTimes
+    			for (let i = 0; i < keyTimes.length - 1; i++) {
+    				if (normalizedTime >= keyTimes[i] && normalizedTime <= keyTimes[i + 1]) {
+    					intervalIndex = i;
+    					// Calculate linear progress within this interval
+    					const intervalDuration = keyTimes[i + 1] - keyTimes[i];
+    					if (intervalDuration > 0) {
+    						localProgress = (normalizedTime - keyTimes[i]) / intervalDuration;
+    					} else {
+                            // Handle keyTimes that are the same (instantaneous change)
+                            localProgress = (normalizedTime === keyTimes[i]) ? 0 : 1;
+                        }
+    					break;
+    				}
+    			}
+                // Handle the very end case where normalizedTime is exactly 1
+                 if (normalizedTime === 1 && keyTimes.length > 0 && keyTimes[keyTimes.length - 1] === 1) {
+                     intervalIndex = keyTimes.length - 2; // The last interval
+                     localProgress = 1; // At the end of the last interval
+                 }
+    
+    		} else if (valueList.length === 1 && keyTimes.length <= 1) {
+                // If only one value (and optionally keyTime 0 or missing), it's a constant value animation from begin time
+                 if (elapsed >= 0) {
+                    target.setAttribute(attributeName, valueList[0]);
+                    interpolatedValue = null; // Indicate attribute was set
+                    return; // Nothing to interpolate, value is constant
+                 } else {
+                    return; // Not yet active
+                 }
+            } else if (valueList.length === 2 && keyTimes.length === 0) {
+                // from/to case without explicit keyTimes - default to linear 0-1
+                 intervalIndex = 0;
+                 localProgress = normalizedTime; // Use overall normalized time as local progress
+                 if (keySplines.length > 0 && calcMode === 'spline') {
+                     // If keySplines are provided for a from/to animation, use the first one
+                     localProgress = getCubicBezierInterpolation(localProgress, ...keySplines[0]);
+                 }
+            } else if (valueList.length > 2 && keyTimes.length === 0) {
+                 // values without keyTimes - default to even distribution of keyTimes
+                 // console.warn(`'values' provided without 'keyTimes' for attribute '${attributeName}'. Assuming evenly distributed keyTimes.`);
+                 const inferredKeyTimes = [];
+                 for (let i = 0; i < valueList.length; i++) {
+                     inferredKeyTimes.push(i / (valueList.length - 1));
+                 }
+                  for (let i = 0; i < inferredKeyTimes.length - 1; i++) {
+    				if (normalizedTime >= inferredKeyTimes[i] && normalizedTime <= inferredKeyTimes[i + 1]) {
+    					intervalIndex = i;
+    					const intervalDuration = inferredKeyTimes[i + 1] - inferredKeyTimes[i];
+    					if (intervalDuration > 0) {
+    						localProgress = (normalizedTime - inferredKeyTimes[i]) / intervalDuration;
+    					} else {
+                             localProgress = (normalizedTime === inferredKeyTimes[i]) ? 0 : 1;
+                        }
+    					break;
+    				}
+    			}
+                 if (normalizedTime === 1 && inferredKeyTimes.length > 0 && inferredKeyTimes[inferredKeyTimes.length - 1] === 1) {
+                     intervalIndex = inferredKeyTimes.length - 2; // The last interval
+                     localProgress = 1; // At the end of the last interval
+                 }
+                 if (keySplines.length > 0 && keySplines.length === valueList.length -1 && calcMode === 'spline') {
+                     localProgress = getCubicBezierInterpolation(localProgress, ...keySplines[intervalIndex]);
+                 }
+            }
+    
+    
+    		let startValue = valueList[intervalIndex];
+    		let endValue = valueList[intervalIndex + 1] !== undefined ? valueList[intervalIndex + 1] : startValue; // Use start value if end value is missing (e.g., last value in list)
+    
+    
+    		let effectiveProgress = localProgress;
+    
+    		if (calcMode === 'discrete') {
+                 // In discrete mode, the value changes instantaneously at each keyTime.
+                 // The value is held until the next keyTime is reached.
+                 // If at a keyTime, the value is the one *at* that keyTime.
+                 // If normalizedTime is exactly a keyTime, use the value corresponding to that keyTime index.
+                 // Otherwise, find the interval and use the start value of that interval.
+                 let discreteValue = startValue; // Default to the start of the interval
+                 if (keyTimes.length > 0) {
+                      let keyTimeIndex = -1;
+                     // Find if normalizedTime matches any keyTime exactly
+                     for(let i = 0; i < keyTimes.length; i++) {
+                         if (Math.abs(normalizedTime - keyTimes[i]) < 0.0001) { // Use a small tolerance for floating point
+                             keyTimeIndex = i;
+                             break;
+                         }
+                     }
+    
+                     if (keyTimeIndex !== -1 && keyTimeIndex < valueList.length) {
+                         discreteValue = valueList[keyTimeIndex];
+                     } else {
+                          // If not exactly on a keyTime, use the value from the interval start.
+                          // intervalIndex is already calculated based on normalizedTime >= keyTimes[i] and <= keyTimes[i+1]
+                          // If normalizedTime is not exactly a keyTime, it falls within an interval (keyTimes[i], keyTimes[i+1]).
+                          // The value for this interval is values[i].
+                          discreteValue = valueList[intervalIndex];
+                     }
+                 } else {
+                     // If calcMode is discrete but no keyTimes, it behaves like 'set' at begin time to the 'to' or last 'values' entry.
+                     // Or if 'from'/'to', it snaps to 'to' at begin.
+                     if (elapsed >= 0) {
+                        if (to !== null) discreteValue = to;
+                        else if (valueList.length > 0) discreteValue = valueList[valueList.length - 1];
+                        else discreteValue = startValue; // Should not happen if valueList is populated correctly
+                     } else {
+                         return; // Not active yet
+                     }
+                 }
+    
+                  // Apply the discrete value directly
+                 if (attributeName) {
+                     target.setAttribute(attributeName, discreteValue);
+                     interpolatedValue = null; // Indicate attribute was set
+                 } else {
+                      console.warn("Cannot set attribute, attributeName is missing for discrete animation.");
+                 }
+                 return; // Skip interpolation for discrete mode
+    		} else if (calcMode === 'spline') {
+                 // For spline, the progress within the interval is eased by the cubic bezier curve.
+                 // Use the keySplines corresponding to the current interval.
+                 if (keySplines.length > intervalIndex) {
+                     const [x1, y1, x2, y2] = keySplines[intervalIndex];
+                     effectiveProgress = getCubicBezierInterpolation(localProgress, x1, y1, x2, y2);
+                 } else {
+                     // If keySplines are missing for an interval, default to linear for that interval.
+                     console.warn(`keySplines missing for interval ${intervalIndex} for attribute '${attributeName}'. Defaulting to linear interpolation for this interval.`);
+                      effectiveProgress = localProgress; // Linear interpolation
+                 }
+             } else { // calcMode is 'linear' (default) or 'paced' (which we treat as linear if keyTimes are provided)
+                 effectiveProgress = localProgress; // Linear interpolation within the interval
+             }
+    
+    
+    		// --- Perform Interpolation Based on Animation Type and Attribute ---
+    		// This part uses the calculated 'effectiveProgress'
+    
+    		if (tagName === "animatetransform") {
+    			const type = anim.getAttribute("type");
+    			if (startValue !== null && endValue !== null) {
+    				if (type === "translate") {
+    					const startCoords = startValue.split(/\s|,/).map(parseFloat).filter(n => !isNaN(n));
+    					const endCoords = endValue.split(/\s|,/).map(parseFloat).filter(n => !isNaN(n));
+    					if (startCoords.length === endCoords.length && startCoords.length > 0) {
+    						const interpolatedCoords = startCoords.map((start, i) =>
+    							start + (endCoords[i] - start) * effectiveProgress
+    						);
+    						interpolatedValue = `${type}(${interpolatedCoords.join(" ")})`; // Use the type in the transform string
+    					}
+    				} else if (type === "scale") {
+                         const startScale = startValue.split(/\s|,/).map(parseFloat).filter(n => !isNaN(n));
+                         const endScale = endValue.split(/\s|,/).map(parseFloat).filter(n => !isNaN(n));
+                         if (startScale.length === endScale.length && startScale.length > 0) {
+                             const interpolatedScale = startScale.map((start, i) =>
+                                 start + (endScale[i] - start) * effectiveProgress
+                             );
+                             interpolatedValue = `${type}(${interpolatedScale.join(" ")})`;
+                         }
+                     } else if (type === "rotate") {
+                          const startRotate = startValue.split(/\s|,/).map(parseFloat).filter(n => !isNaN(n));
+                          const endRotate = endValue.split(/\s|,/).map(parseFloat).filter(n => !isNaN(n));
+                         // Rotate can have 1 (angle), 3 (angle cx cy) parameters
+                          if (startRotate.length === endRotate.length && (startRotate.length === 1 || startRotate.length === 3)) {
+                              const interpolatedRotate = startRotate.map((start, i) =>
+                                  start + (endRotate[i] - start) * effectiveProgress
+                              );
+                               interpolatedValue = `${type}(${interpolatedRotate.join(" ")})`;
+                          }
+                     }
+                     // Add handling for other transform types: skewX, skewY if needed
+    			}
+    		} else if (tagName === "animate") {
+    			if (attributeName && startValue !== null && endValue !== null) {
+    				if (attributeName === "d") {
+    					// --- Handling 'd' attribute animation (Path Morphing) ---
+    					// Basic interpolation attempt - will only work for paths with identical structure.
+    					// Robust path morphing requires a dedicated library.
+    
+    					try {
+    						const parsePathData = (pathString) => {
+    							const commands = pathString.match(/[a-df-zA-DF-Z][^a-df-zA-DF-Z]*/g) || [];
+    							return commands.map(cmd => {
+    								const type = cmd[0];
+    								const params = (cmd.substring(1).trim().match(/[+-]?(\d*\.\d+|\d+\.?)([eE][+-]?\d+)?/g) || []).map(parseFloat).filter(n => !isNaN(n));
+    								return { type, params };
+    							});
+    						};
+    
+    						const interpolateParameters = (startParams, endParams, progress) => {
+    							const interpolated = [];
+    							const len = Math.min(startParams.length, endParams.length);
+    							for (let i = 0; i < len; i++) {
+    								interpolated.push(startParams[i] + (endParams[i] - startParams[i]) * progress);
+    							}
+    							return interpolated;
+    						};
+    
+    						const buildPathStringFromCommands = (interpolatedCommands) => {
+    							return interpolatedCommands.map(cmd => {
+    								const formattedParams = cmd.params.map(p => parseFloat(p.toFixed(4))).join(" ");
+    								return cmd.type + formattedParams;
+    							}).join("");
+    						};
+    
+    						const startPath = parsePathData(startValue);
+    						const endPath = parsePathData(endValue);
+    
+    						if (startPath.length === endPath.length) {
+    							const interpolatedCommands = [];
+    							let canInterpolate = true;
+    							for(let i = 0; i < startPath.length; i++) {
+    								const startCmd = startPath[i];
+    								const endCmd = endPath[i];
+    
+    								if (startCmd.type === endCmd.type && startCmd.params.length === endCmd.params.length) {
+    									interpolatedCommands.push({
+    										type: startCmd.type,
+    										params: interpolateParameters(startCmd.params, endCmd.params, effectiveProgress) // Use effectiveProgress here
+    									});
+    								} else {
+    									// console.warn(`Cannot interpolate path command at index ${i} due to type or parameter mismatch for 'd' attribute.`);
+    									canInterpolate = false;
+    									break;
+    								}
+    							}
+    
+    							if (canInterpolate) {
+    								interpolatedValue = buildPathStringFromCommands(interpolatedCommands);
+    							} else {
+                                     // console.warn("Path interpolation failed due to command mismatch. Using start path data.");
+                                     interpolatedValue = startValue;
+                                 }
+    
+    						} else {
+    							// console.warn("Path command count mismatch. Cannot perform simple interpolation for 'd' attribute.");
+                                 interpolatedValue = startValue;
+    						}
+    
+    					} catch (e) {
+    						console.error("Error during 'd' attribute interpolation:", e);
+    						interpolatedValue = startValue; // Fallback on error
+    					}
+    					// --- End of 'd' attribute handling ---
+    
+    				} else {
+    					// Handle other attributes (e.g., opacity, r, cx, cy, width, height, colors)
+    					// Attempt numeric interpolation first
+    					const startNum = parseFloat(startValue);
+    					const endNum = parseFloat(endValue);
+    
+    					if (!isNaN(startNum) && !isNaN(endNum)) {
+    						// Simple numeric interpolation using effectiveProgress
+    						interpolatedValue = startNum + (endNum - startNum) * effectiveProgress;
+                             target.setAttribute(attributeName, interpolatedValue.toString()); // Set directly
+                             interpolatedValue = null; // Indicate attribute was set
+    					} else {
+    						// Handle color interpolation (basic hex color support)
+                             if (/^#([0-9A-F]{3}){1,2}$/i.test(startValue) && /^#([0-9A-F]{3}){1,2}$/i.test(endValue)) {
+                                  try {
+                                      const hexToRgb = (hex) => {
+                                          const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+                                          hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
+                                          const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                                          return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null;
+                                      };
+    
+                                      const rgbToHex = (r, g, b) => {
+                                          const toHex = (c) => {
+                                              const hex = Math.round(Math.max(0, Math.min(255, c))).toString(16); // Clamp and round
+                                              return hex.length === 1 ? "0" + hex : hex;
+                                          };
+                                          return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+                                      };
+    
+                                      const startRgb = hexToRgb(startValue);
+                                      const endRgb = hexToRgb(endValue);
+    
+                                      if (startRgb && endRgb) {
+                                          const interpolatedRgb = startRgb.map((start, i) =>
+                                              start + (endRgb[i] - start) * effectiveProgress // Use effectiveProgress here
+                                          );
+                                          interpolatedValue = rgbToHex(interpolatedRgb[0], interpolatedRgb[1], interpolatedRgb[2]);
+                                           target.setAttribute(attributeName, interpolatedValue); // Set directly
+                                           interpolatedValue = null; // Indicate attribute was set
+                                      } else {
+                                          console.warn(`Color interpolation failed for attribute '${attributeName}'.`);
+                                           target.setAttribute(attributeName, startValue); // Fallback
+                                           interpolatedValue = null; // Indicate attribute was set
+                                      }
+                                  } catch (e) {
+                                       console.error(`Error during color interpolation for attribute '${attributeName}':`, e);
+                                        target.setAttribute(attributeName, startValue); // Fallback
+                                        interpolatedValue = null; // Indicate attribute was set
+                                  }
+                             } else {
+                                 // Cannot interpolate this attribute type with the current logic
+                                 console.warn(`Attribute '${attributeName}' with values '${startValue}' and '${endValue}' is not handled by simple interpolation.`);
+                                 // Fallback: set the attribute to the start value.
+                                 target.setAttribute(attributeName, startValue);
+                                 interpolatedValue = null; // Indicate attribute was set
+                             }
+    					}
+    				}
+    			}
+    		} else if (tagName === "set") {
+    			// 'set' animation just sets a value at a specific time.
+                // With keyTimes, it sets the value at each keyTime. Without keyTimes, it sets at 'begin'.
+                // Repetition means it sets the value at the start of each cycle.
+                const toValue = anim.getAttribute("to");
+                if (toValue !== null) {
+                    let applySet = false;
+                    if (keyTimes.length > 0) {
+                        // For set with keyTimes, apply the value if the normalized time is exactly one of the keyTimes,
+                        // or if it's the last keyTime and fill="freeze" and elapsed >= duration.
+                         if (keyTimes.some(kt => Math.abs(normalizedTime - kt) < 0.0001)) { // Check for exact match with tolerance
+                            applySet = true;
+                         } else if (fill === 'freeze' && normalizedTime === 1 && keyTimes[keyTimes.length - 1] === 1) {
+                             applySet = true; // Apply the last value if frozen at the end
+                         }
                     } else {
-                      console.warn(`Color interpolation failed for attribute '${attributeName}'.`);
-                      target.setAttribute(attributeName, startValue); // Fallback
-                      interpolatedValue = null; // Indicate attribute was set
+                        // For set without keyTimes, apply the value at begin time.
+                        // If repeating indefinitely, it's effectively set from begin onwards.
+                        // If finite duration, set applies from begin for the duration.
+                         if (elapsed >= 0 && (dur === Infinity || elapsed < dur)) {
+                            applySet = true;
+                         } else if (fill === 'freeze' && elapsed >= dur) {
+                             applySet = true; // Apply 'to' value if frozen after duration
+                         }
                     }
-                  } catch (e) {
-                    console.error(`Error during color interpolation for attribute '${attributeName}':`, e);
-                    target.setAttribute(attributeName, startValue); // Fallback
-                    interpolatedValue = null; // Indicate attribute was set
-                  }
-                } else {
-                  // Cannot interpolate this attribute type with the current logic
-                  console.warn(`Attribute '${attributeName}' with values '${startValue}' and '${endValue}' is not handled by simple interpolation.`);
-                  // Fallback: set the attribute to the start value if active, or end value if frozen (if not repeating indefinitely).
-                  if (active && (!isRepeatingIndefinitely || progress === 0)) { // If repeating, only set to start at the very beginning of a cycle
-                    target.setAttribute(attributeName, startValue);
-                    interpolatedValue = null; // Indicate attribute was set
-                  } else if (active && progress === 1 && !isRepeatingIndefinitely && fill === 'freeze') {
-                    target.setAttribute(attributeName, endValue);
-                    interpolatedValue = null; // Indicate attribute was set
-                  }
+    
+                    if (applySet) {
+                        target.setAttribute(attributeName, toValue);
+                        interpolatedValue = null; // Indicate attribute was set
+                    } else if (fill === 'freeze' && elapsed >= dur && dur !== Infinity && keyTimes.length === 0) {
+    					// Special case: finite duration, fill=freeze, no keyTimes. 'to' value holds after duration.
+    					target.setAttribute(attributeName, toValue);
+                        interpolatedValue = null; // Indicate attribute was set
+    				}
                 }
-              }
-            }
-          }
-        } else if (tagName === "set") {
-          // 'set' animation just sets a value at a specific time.
-          // If the current time 't' is at or after the 'begin' time and within the duration
-          // (or indefinitely), apply the 'to' value.
-          const toValue = anim.getAttribute("to");
-          // For 'set', repetition means the value is set again at the start of each cycle.
-          // If repeating indefinitely, the 'to' value is active whenever elapsed >= 0.
-          // If not repeating, it's active only within the single duration.
-          if (toValue !== null) {
-            if (isRepeatingIndefinitely && elapsed >= 0) {
-              target.setAttribute(attributeName, toValue);
-              interpolatedValue = null; // Indicate attribute was set
-            } else if (elapsed >= 0 && elapsed < dur) {
-              target.setAttribute(attributeName, toValue);
-              interpolatedValue = null; // Indicate attribute was set
-            } else if (fill === 'freeze' && elapsed >= dur) {
-              // If frozen and past the end, apply the 'to' value as the final state
-              target.setAttribute(attributeName, toValue);
-              interpolatedValue = null; // Indicate attribute was set
-            }
-          }
-        }
-        // animateMotion is complex and requires calculating a point along a path and positioning the target.
-        // Skipping this for now as it adds significant complexity.
-        // If an interpolated value was computed and not already set, apply it to the target element.
-        // This check is needed because some attribute types (like numbers or colors) might be set directly.
-        if (interpolatedValue !== null) {
-          target.setAttribute(attributeName, interpolatedValue);
-        }
-      });
-      // After processing animations and applying their calculated state at time 't',
-      // remove the animation elements from the cloned SVG.
-      stagingSvg.querySelectorAll("animate, animateTransform, animateMotion, set").forEach((el) => el.remove());
-      // Serialize the modified SVG back to a string
-      const svgData = new XMLSerializer().serializeToString(stagingSvg);
-      // Create a Blob from the SVG data
-      const blob = new Blob([svgData], {
-        type: "image/svg+xml;charset=utf-8"
-      });
-      // Create an object URL for the Blob
-      const url = DOMURL.createObjectURL(blob);
-      // Create a canvas element to draw the SVG onto
-      const canvas = document.createElement("canvas");
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext("2d");
-      // Fill the background if a color is specified
-      if (bgColor !== null) {
-        ctx.fillStyle = bgColor;
-        ctx.fillRect(0, 0, width, height);
-      }
-      // Load the SVG image onto the canvas
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.crossOrigin = "anonymous"; // Required for loading data URLs or cross-origin images
-        img.onload = () => {
-          // Draw the image onto the canvas
-          ctx.drawImage(img, 0, 0, width, height);
-          // Revoke the object URL to free up resources
-          DOMURL.revokeObjectURL(url);
-          // Resolve the promise with the PNG data URL
-          resolve(canvas.toDataURL("image/png"));
-        };
-        img.onerror = (e) => {
-          // Revoke the object URL on error
-          DOMURL.revokeObjectURL(url);
-          // Reject the promise with the error
-          reject(e);
-        };
-        // Set the image source to the object URL
-        img.src = url;
-      });
+    		}
+            // animateMotion is complex and requires calculating a point along a path and positioning the target.
+            // Skipping this for now as it adds significant complexity.
+    
+    		// If an interpolated value was computed and not already set, apply it to the target element.
+    		// This check is needed because some attribute types (like numbers or colors) might be set directly.
+    		if (interpolatedValue !== null) {
+    			target.setAttribute(attributeName, interpolatedValue);
+    		}
+    	});
+    
+    	// After processing animations and applying their calculated state at time 't',
+    	// remove the animation elements from the cloned SVG.
+    	stagingSvg.querySelectorAll("animate, animateTransform, animateMotion, set").forEach((el) => el.remove());
+    
+    	// Serialize the modified SVG back to a string
+    	const svgData = new XMLSerializer().serializeToString(stagingSvg);
+    
+    	// Create a Blob from the SVG data
+    	const blob = new Blob([svgData], {
+    		type: "image/svg+xml;charset=utf-8"
+    	});
+    
+    	// Create an object URL for the Blob
+    	const url = DOMURL.createObjectURL(blob);
+    
+    	// Create a canvas element to draw the SVG onto
+    	const canvas = document.createElement("canvas");
+    	canvas.width = width;
+    	canvas.height = height;
+    	const ctx = canvas.getContext("2d");
+    
+    	// Fill the background if a color is specified
+    	if (bgColor !== null) {
+    		ctx.fillStyle = bgColor;
+    		ctx.fillRect(0, 0, width, height);
+    	}
+    
+    	// Load the SVG image onto the canvas
+    	return new Promise((resolve, reject) => {
+    		const img = new Image();
+    		img.crossOrigin = "anonymous"; // Required for loading data URLs or cross-origin images
+    		img.onload = () => {
+    			// Draw the image onto the canvas
+    			ctx.drawImage(img, 0, 0, width, height);
+    			// Revoke the object URL to free up resources
+    			DOMURL.revokeObjectURL(url);
+    			// Resolve the promise with the PNG data URL
+    			resolve(canvas.toDataURL("image/png"));
+    		};
+    		img.onerror = (e) => {
+    			// Revoke the object URL on error
+    			DOMURL.revokeObjectURL(url);
+    			// Reject the promise with the error
+    			reject(e);
+    		};
+    		// Set the image source to the object URL
+    		img.src = url;
+    	});
     }
+    
     /**
-      * Extracts the width and height from an SVG element, preferring width/height attributes,
-      * falling back to viewBox dimensions, and ensuring the smaller dimension is at least 200.
-      *
-      * @param {SVGSVGElement} svgElement The SVG element to inspect.
-      * @returns {{width: number, height: number} | null} An object containing the processed width and height, or null if no valid dimensions could be found.
-      */
+     * Extracts the width and height from an SVG element, preferring width/height attributes,
+     * falling back to viewBox dimensions, and ensuring the smaller dimension is at least 200.
+     *
+     * @param {SVGSVGElement} svgElement The SVG element to inspect.
+     * @returns {{width: number, height: number} | null} An object containing the processed width and height, or null if no valid dimensions could be found.
+     */
     function getProcessedSvgDimensions(svgElement) {
-      let resultWidth = null;
-      let resultHeight = null;
-      // 1. Try to get dimensions from width and height attributes
-      const widthAttr = svgElement.getAttribute('width');
-      const heightAttr = svgElement.getAttribute('height');
-      const parsedWidth = parseFloat(widthAttr);
-      const parsedHeight = parseFloat(heightAttr);
-      // Check if both width and height attributes provide valid numbers
-      if (!isNaN(parsedWidth) && !isNaN(parsedHeight) && parsedWidth > 0 && parsedHeight > 0) {
-        resultWidth = parsedWidth;
-        resultHeight = parsedHeight;
-        console.log(`Using dimensions from width/height attributes: ${resultWidth}x${resultHeight}`);
-      } else {
-        // 2. If width/height attributes are missing or invalid, fall back to viewBox
-        console.log("Width/height attributes missing or invalid, attempting to use viewBox.");
-        const viewBoxAttr = svgElement.getAttribute('viewBox');
-        if (viewBoxAttr) {
-          // Split the viewBox string by whitespace or commas, then convert to numbers
-          const values = viewBoxAttr.split(/[\s,]+/).map(parseFloat);
-          // A valid viewBox should have exactly 4 numeric values: x, y, width, height.
-          if (values.length === 4 && values.every(val => !isNaN(val))) {
-            const viewBoxWidth = values[2];
-            const viewBoxHeight = values[3];
-            // Ensure viewBox dimensions are positive before using them
-            if (viewBoxWidth > 0 && viewBoxHeight > 0) {
-              resultWidth = viewBoxWidth;
-              resultHeight = viewBoxHeight;
-              console.log(`Using dimensions from viewBox attribute: ${resultWidth}x${resultHeight}`);
-            } else {
-              console.warn("ViewBox dimensions are zero or negative, cannot use them.");
-            }
-          } else {
-            console.error("Invalid viewBox attribute format:", viewBoxAttr);
-          }
-        } else {
-          console.warn("SVG element does not have a viewBox attribute either.");
-        }
-      }
-      // 3. Check if we successfully got valid dimensions
-      if (resultWidth === null || resultHeight === null || isNaN(resultWidth) || isNaN(resultHeight) || resultWidth <= 0 || resultHeight <= 0) {
-        console.error("Could not determine valid positive dimensions from width/height or viewBox.");
-        return null; // Cannot proceed without valid dimensions
-      }
-      // 4. Scale up dimensions if the lesser value is less than 200
-      const minDimension = Math.min(resultWidth, resultHeight);
-      const minPixelValue = parseFloat(document.getElementById("pixelMinimumInput").value) || 200;
-      if (minDimension > 0 && minDimension < minPixelValue) { // Check minDimension > 0 to avoid division by zero
-        console.log(`Scaling dimensions up because the minimum dimension (${minDimension}) is less than ${minPixelValue}.`);
-        const scale = minPixelValue / minDimension;
-        resultWidth = resultWidth * scale;
-        resultHeight = resultHeight * scale;
-        console.log(`Scaled dimensions: ${resultWidth}x${resultHeight}`);
-      } else {
-        console.log(`No scaling needed. Minimum dimension is ${minDimension}.`);
-      }
-      // Return the final processed dimensions
-      return {
-        width: resultWidth,
-        height: resultHeight
-      };
+      let resultWidth = null;
+      let resultHeight = null;
+    
+      // 1. Try to get dimensions from width and height attributes
+      const widthAttr = svgElement.getAttribute('width');
+      const heightAttr = svgElement.getAttribute('height');
+    
+      const parsedWidth = parseFloat(widthAttr);
+      const parsedHeight = parseFloat(heightAttr);
+    
+      // Check if both width and height attributes provide valid numbers
+      if (!isNaN(parsedWidth) && !isNaN(parsedHeight) && parsedWidth > 0 && parsedHeight > 0) {
+        resultWidth = parsedWidth;
+        resultHeight = parsedHeight;
+        console.log(`Using dimensions from width/height attributes: ${resultWidth}x${resultHeight}`);
+      } else {
+        // 2. If width/height attributes are missing or invalid, fall back to viewBox
+        console.log("Width/height attributes missing or invalid, attempting to use viewBox.");
+        const viewBoxAttr = svgElement.getAttribute('viewBox');
+    
+        if (viewBoxAttr) {
+          // Split the viewBox string by whitespace or commas, then convert to numbers
+          const values = viewBoxAttr.split(/[\s,]+/).map(parseFloat);
+    
+          // A valid viewBox should have exactly 4 numeric values: x, y, width, height.
+          if (values.length === 4 && values.every(val => !isNaN(val))) {
+            const viewBoxWidth = values[2];
+            const viewBoxHeight = values[3];
+    
+            // Ensure viewBox dimensions are positive before using them
+            if (viewBoxWidth > 0 && viewBoxHeight > 0) {
+                 resultWidth = viewBoxWidth;
+                 resultHeight = viewBoxHeight;
+                 console.log(`Using dimensions from viewBox attribute: ${resultWidth}x${resultHeight}`);
+            } else {
+                 console.warn("ViewBox dimensions are zero or negative, cannot use them.");
+            }
+    
+          } else {
+            console.error("Invalid viewBox attribute format:", viewBoxAttr);
+          }
+        } else {
+            console.warn("SVG element does not have a viewBox attribute either.");
+        }
+      }
+    
+      // 3. Check if we successfully got valid dimensions
+      if (resultWidth === null || resultHeight === null || isNaN(resultWidth) || isNaN(resultHeight) || resultWidth <= 0 || resultHeight <= 0) {
+          console.error("Could not determine valid positive dimensions from width/height or viewBox.");
+          return null; // Cannot proceed without valid dimensions
+      }
+    
+      // 4. Scale up dimensions if the lesser value is less than 200
+      const minDimension = Math.min(resultWidth, resultHeight);
+    	const minPixelValue = parseFloat(document.getElementById("pixelMinimumInput").value) || 200;
+      if (minDimension > 0 && minDimension < minPixelValue) { // Check minDimension > 0 to avoid division by zero
+        console.log(`Scaling dimensions up because the minimum dimension (${minDimension}) is less than ${minPixelValue}.`);
+        const scale = minPixelValue / minDimension;
+        resultWidth = resultWidth * scale;
+        resultHeight = resultHeight * scale;
+        console.log(`Scaled dimensions: ${resultWidth}x${resultHeight}`);
+      } else {
+          console.log(`No scaling needed. Minimum dimension is ${minDimension}.`);
+      }
+    
+      // Return the final processed dimensions
+      return { width: resultWidth, height: resultHeight };
     }
+    
+    
     // Single frame export
     document.getElementById("export").addEventListener("click", async () => {
-      const svg = document.getElementById("mysvg");
-      const t = parseFloat(document.getElementById("timeInput").value);
-      const useTrans = document.getElementById("singleTransparent").checked;
-      const bg = useTrans ? null : document.getElementById("singleBgColor").value;
-      const vbDims = getProcessedSvgDimensions(svg);
-      const svgH = vbDims.height || 200;
-      const svgW = vbDims.width || 200;
-      const png = await exportSVGFrameAsPNG(svg, t, svgW, svgH, bg);
-      document.getElementById("preview").src = png;
+    	const svg = document.getElementById("mysvg");
+    	const t = parseFloat(document.getElementById("timeInput").value);
+    	const useTrans = document.getElementById("singleTransparent").checked;
+    	const bg = useTrans ? null : document.getElementById("singleBgColor").value;
+    	const vbDims = getProcessedSvgDimensions(svg);
+    	if (!vbDims) {
+    		console.error("Could not get valid SVG dimensions.");
+    		return; // Stop if dimensions are invalid
+    	}
+    	const svgH = vbDims.height;
+    	const svgW = vbDims.width;
+    	const png = await exportSVGFrameAsPNG(svg, t, svgW, svgH, bg);
+    	document.getElementById("preview").src = png;
     });
     // Carousel generation + download
     let framesData = [];
     document
-      .getElementById("generateCarousel")
-      .addEventListener("click", async () => {
-        const svg = document.getElementById("mysvg");
-        const totalDuration = parseFloat(
-          document.getElementById("durationInput").value
-        );
-        const fps = parseInt(document.getElementById("fpsInput").value, 10);
-        const useTrans = document.getElementById("carouselTransparent").checked;
-        const bg = useTrans ? null : document.getElementById("carouselBgColor").value;
-        const totalFrames = Math.ceil(totalDuration * fps);
-        const loading = document.getElementById("loading");
-        const progress = document.getElementById("progress");
-        const status = document.getElementById("status");
-        const container = document.getElementById("carousel-container");
-        const downloadBtn = document.getElementById("downloadZip");
-        container.innerHTML = "";
-        framesData = [];
-        downloadBtn.style.display = "none";
-        loading.style.display = "block";
-        let done = 0;
-        for (let i = 0; i < totalFrames; i++) {
-          const frameTime = Math.min(i / fps, totalDuration);
-          const vbDims = getProcessedSvgDimensions(svg);
-          const svgH = vbDims.height || 200;
-          const svgW = vbDims.width || 200;
-          const png = await exportSVGFrameAsPNG(svg, frameTime, svgW, svgH, bg);
-          framesData.push({
-            name: `frame${i + 1}.png`,
-            data: png
-          });
-          const item = document.createElement("div");
-          item.className = "carousel-item";
-          const img = document.createElement("img");
-          img.src = png;
-          img.className = "frame-img";
-          const fBadge = document.createElement("div");
-          fBadge.className = "badge frame";
-          fBadge.innerText = `#${i + 1}`;
-          const tBadge = document.createElement("div");
-          tBadge.className = "badge time";
-          tBadge.innerText = `${(i / fps).toFixed(2)}s`;
-          item.append(img, fBadge, tBadge);
-          container.appendChild(item);
-          done++;
-          progress.innerText = Math.round((done / totalFrames) * 100) + "%";
-        }
-        loading.style.display = "none";
-        status.innerText = `Generated ${totalFrames} frames.`;
-        downloadBtn.style.display = "block";
-      });
+    	.getElementById("generateCarousel")
+    	.addEventListener("click", async () => {
+    		const svg = document.getElementById("mysvg");
+    		const totalDuration = parseFloat(
+    			document.getElementById("durationInput").value
+    		);
+    		const fps = parseInt(document.getElementById("fpsInput").value, 10);
+    		const useTrans = document.getElementById("carouselTransparent").checked;
+    		const bg = useTrans ? null : document.getElementById("carouselBgColor").value;
+    		const totalFrames = Math.ceil(totalDuration * fps);
+    		const loading = document.getElementById("loading");
+    		const progress = document.getElementById("progress");
+    		const status = document.getElementById("status");
+    		const container = document.getElementById("carousel-container");
+    		const downloadBtn = document.getElementById("downloadZip");
+    		container.innerHTML = "";
+    		framesData = [];
+    		downloadBtn.style.display = "none";
+    		loading.style.display = "block";
+    
+    		const vbDims = getProcessedSvgDimensions(svg);
+    		if (!vbDims) {
+    			console.error("Could not get valid SVG dimensions.");
+    			loading.style.display = "none";
+    			status.innerText = "Failed to generate frames: Invalid SVG dimensions.";
+    			return; // Stop if dimensions are invalid
+    		}
+    		const svgH = vbDims.height;
+    		const svgW = vbDims.width;
+    
+    		let done = 0;
+    		for (let i = 0; i < totalFrames; i++) {
+    			const frameTime = Math.min(i / fps, totalDuration);
+    
+    			const png = await exportSVGFrameAsPNG(svg, frameTime, svgW, svgH, bg);
+    			framesData.push({
+    				name: `frame${i + 1}.png`,
+    				data: png
+    			});
+    			const item = document.createElement("div");
+    			item.className = "carousel-item";
+    			const img = document.createElement("img");
+    			img.src = png;
+    			img.className = "frame-img";
+    			const fBadge = document.createElement("div");
+    			fBadge.className = "badge frame";
+    			fBadge.innerText = `#${i + 1}`;
+    			const tBadge = document.createElement("div");
+    			tBadge.className = "badge time";
+    			tBadge.innerText = `${(i / fps).toFixed(2)}s`;
+    			item.append(img, fBadge, tBadge);
+    			container.appendChild(item);
+    			done++;
+    			progress.innerText = Math.round((done / totalFrames) * 100) + "%";
+    		}
+    		loading.style.display = "none";
+    		status.innerText = `Generated ${totalFrames} frames.`;
+    		downloadBtn.style.display = "block";
+    	});
     document.getElementById("downloadZip").addEventListener("click", () => {
-      const zip = new JSZip();
-      framesData.forEach((f) => {
-        const base64 = f.data.split(",")[1];
-        zip.file(f.name, base64, {
-          base64: true
-        });
-      });
-      zip
-        .generateAsync({
-          type: "blob"
-        })
-        .then((blob) => saveAs(blob, "carousel_frames.zip"));
+    	const zip = new JSZip();
+    	framesData.forEach((f) => {
+    		const base64 = f.data.split(",")[1];
+    		zip.file(f.name, base64, {
+    			base64: true
+    		});
+    	});
+    	zip
+    		.generateAsync({
+    			type: "blob"
+    		})
+    		.then((blob) => saveAs(blob, "carousel_frames.zip"));
     });
   </script>
 
