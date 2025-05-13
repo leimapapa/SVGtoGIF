@@ -1,5 +1,5 @@
 <svg viewBox="0 0 100 100" id="coolBeans" xmlns="http://www.w3.org/2000/svg">
-				<path fill="brown" stroke="#fff" stroke-width="2" d="M 17 59 c -13 8 -13 39 15 35 a 50 50 0 0 0 31 -83 c -11 -11 -38 -4 -25 29 c 5 14 -9 11 -21 19z" />
+				<path fill="forestgreen" stroke="#fff" stroke-width="2" d="M 17 59 c -13 8 -13 39 15 35 a 50 50 0 0 0 31 -83 c -11 -11 -38 -4 -25 29 c 5 14 -9 11 -21 19z" />
 				<path fill="rgba(255,255,255,0.5)" d="M 42 42 c 7 7 -2 16 -12 14 c 6 -2 14 -5 12 -14 z" />
 				<path fill="#000" d="M 10 24 h 90 v 7.5 h -4 v 3.5 h -3.5 v 3 h -3.5 v 3.5 h -24 v -3.5 h -3.5 v -3 h -3.5 v -7 h -6 v 7 h -3.5 v 3 h -3.5 v 3.5 h -24.5 v -3.5 h -3.5 v -3 h -3.5 v -3.5 h -3.5 z" />
 				<path fill="#fff" d="M 17 28 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 0 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 31 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 0 -7 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z m 3.5 3.5 h 3.5 v 3.5 h -3.5 z" />
